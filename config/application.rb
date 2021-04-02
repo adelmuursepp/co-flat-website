@@ -17,6 +17,7 @@ module CoFlatWebsite
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.autoloader = :classic
 
     config.i18n.available_locales = [:et, :en]
     config.i18n.default_locale = :et
