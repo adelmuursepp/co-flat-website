@@ -17,20 +17,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres 
-  password: rohit123
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: co_flat_website_development
-  host: localhost
-  pool: 5
-  username: postgres
-  password: rohit123
+  <<: *default
+  database: co_flat_website3_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,11 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: co_flat_website_test
-  host: localhost
-  pool: 5
-  username: postgres
-  password: rohit123
+  database: co_flat_website3_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -91,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: co_flat_website_production
-  username: co_flat_website
-  password: <%= ENV['CO_FLAT_WEBSITE_DATABASE_PASSWORD'] %>
+  database: co_flat_website3_production
+  username: co_flat_website3
+  password: <%= ENV['CO_FLAT_WEBSITE3_DATABASE_PASSWORD'] %>
