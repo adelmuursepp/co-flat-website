@@ -1,0 +1,56 @@
+
+<div class="navbar navbar-expand-sm navbar-main">
+ 
+
+  <%= link_to "Co-Flat", root_path, class: "navbar-brand ml-4" %>
+
+
+  <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item mr-1">
+          <%= link_to "Lisa kuulutus", apartments_new_path, class: "nav-link  mr-3" %>
+        </li>
+        <!----
+        <li class="nav-item mr-1">
+          <%= link_to "Eesti keel", root_path(locale: :et), class: "nav-link  mr-3" %>
+        </li>
+        <li class="nav-item mr-1">
+          <%= link_to "English", root_path(locale: :en), class: "nav-link  mr-3" %>
+        </li>
+        
+        ----!>
+       
+        <li class="dropdown nav-item px-5" style="display: flex; flex-direction: row;">
+              <a href="#" class=" dropdown-toggle-split" style="display: flex; flex-direction: row;" data-toggle="dropdown"
+                    role="button" aria-haspopup="true" aria-expanded="false">
+                    <!----
+                    <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>
+                    ---!>
+                    <%= cl_image_tag "user_icon_profile", class: "avatar dropdown-toggle img-circle avatar-small" %>
+                    <p class="my-auto ml-2"><%= current_user.name + " ▾" || "Töölaud ▾" %></p>
+                   
+              </a>
+              <ul class="dropdown-menu" style="min-width: 14rem;">
+                <li class="dropdown-item"><%= link_to "Üles pandud kuulutused", bookings_path %></li>
+                <li class="dropdown-item"><%= link_to "Teated ja sõnumid", bookings_path %></li>
+                <li class="dropdown-item"><%= link_to "Reserveeringud", bookings_path %></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-item"><%= link_to "Muuda profiili infot", edit_user_registration_path %></li>
+                <li class="dropdown-item"><%= link_to "Logi välja", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+      <% else %>
+        <li class="nav-item mr-1">
+            <%= link_to "Lisa kuulutus", apartments_new_path, class: "nav-link  mr-3" %>
+        </li>
+        <li class="nav-item mr-5">
+          <%= link_to "Logi sisse", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item mr-5">
+          <%= link_to "Loo konto", new_user_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

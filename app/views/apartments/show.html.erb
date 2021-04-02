@@ -1,0 +1,228 @@
+<section id="apartment-details" class="apartment-details" style="display: flex; justify-content: center;">
+      <div class="container px-1 mx-1">
+    
+        <div class="row gy-4 px-1">
+          <div class="col-lg-7 mx-0 my-2 px-0"
+            <div class="container-for-slideshow">
+              <div class="swiper-container apartment-slide-container">
+                <div class="swiper-wrapper">
+                  <% @apartment.photos.each do |photo| %>
+                    <div class="swiper-slide apartment-slide"><%= cl_image_tag photo.key, crop: :fill, height: 400, width: 600, :quality=>"auto" %></div>
+                  <% end %>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination page-numbers"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+            <div class="apartment-info mx-auto mt-3" style="width: 600px;">
+              <div class="row mt-4">
+                <div class="col-11">
+                  <p><%= @apartment.description %></p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Toa suurus</strong>
+                  <p><%= @apartment.room_size_m2 %> m²</p>
+                </div>
+                <div class="col-6">
+                    <strong>Korteri suurus</strong>
+                    <p><%= @apartment.apartment_size_m2 %> m²</p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Magamistube</strong>
+                  <p><%= @apartment.bedroomnumber %></p>
+                </div>
+                <div class="col-6">
+                    <strong>Vannitube</strong>
+                    <p><%= @apartment.bathroomnumber %></p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Võimalused</strong>
+                </div>
+              </div>
+              <div class="row mt-4">
+              <% if @apartment.is_wifi %>
+                <div class="col-6">
+                  <p><i class="fas fa-wifi"></i> Internet</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_washing_machine %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-tshirt"></i> Pesumasin</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_parking %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-car-alt"></i> Parkimine</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_furniture %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="fas fa-chair"></i> Mööbel</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_desk %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-school-bench"></i> Laud töötamiseks</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_tv %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="fas fa-tv"></i> Televisoon</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_lift %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="fas fa-door-closed"></i> Lift</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_dishwasher %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-dinner"></i> Nõudepesumasin</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_private_bathroom %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="fas fa-toilet-paper"></i> Eraldi vannituba</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_garden %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-sprout"></i> Aed</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_balcony %>
+                <div class="col-6">
+                    <strong></strong>
+                    <p><i class="lni lni-sun"></i> Rõdu</p>
+                </div>
+              <% end %>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Reeglid</strong>
+                </div>
+              </div>
+              <div class="row mt-4">
+              <% if @apartment.is_pet_friendly %>
+                <div class="col-6">
+                  <p><i class="fas fa-dog"></i> Loomad lubatud</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_smoker_friendly %>
+                <div class="col-6">
+                  <p><i class="fas fa-smoking"></i> Suitsetamine lubatud</p>
+                </div>
+              <% end %>
+              <% if @apartment.is_couples_friendly %>
+                <div class="col-6">
+                  <p><i class="fas fa-user-friends"></i> Paarid lubatud</p>
+                </div>
+              <% end %>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="col-lg-5 mx-0 my-2 px-0 ">
+            <div class="apartment-info">
+              <h3><%= @apartment.intro %></h3>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong><%= @apartment.room_type %></strong>
+                </div>
+                <div class="col-6">
+                    <strong><%= @apartment.propertytype %></strong>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Rent</strong>
+                  <p><%= humanized_money_with_symbol(@apartment.rent) %></p>
+                </div>
+                <div class="col-6">
+                    <strong>Deposiit</strong>
+                    <p>€<%= @apartment.deposit %></p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Saadaval alates</strong>
+                  <p><%= @apartment.available.downcase %></p>    
+                </div>
+                <div class="col-6">
+                  <strong>Miinimum üürimisperiood</strong>
+                  <p><%= @apartment.minimum_stay_in_months %> kuu(d)</p>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-6">
+                  <strong>Korterikaaslased</strong>
+                  <p>Naissoost: <%= @apartment.flatmates_female %></p>
+                  <p>Meessoost: <%= @apartment.flatmates_male %></p> 
+                </div>
+                <div class="col-6">
+                  <strong>Eelistatud korterikaaslane</strong>
+                  <p>Sugu: <%= @apartment.preferred_gender.downcase %></p>
+                  <p>Vanus: <%= @apartment.min_preferred_flatmate_age %> – <%= @apartment.max_preferred_flatmate_age unless @apartment.max_preferred_flatmate_age.blank?  %></p>
+                </div>
+              </div>
+            </div>
+            <div class="my-4">
+              <%= form_tag bookings_path do %>
+                <%= hidden_field_tag 'apartment_id', @apartment.id %>
+                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa soovi korral sõnum või kontaktandmed" %>
+                <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
+              <% end %>
+            </div>
+
+            <div class="apartment-info">
+              <div class="row mt-4">
+                  <div class="col-6">
+                    <strong><%= t '.location' %></strong>
+                    <p><%= @apartment.neighborhood unless @apartment.neighborhood.blank? %></p>
+                    <p><%= @apartment.city unless @apartment.city.blank? %></p>
+                    <p><%= @apartment.city unless @apartment.show_address %></p>
+                  </div>
+              </div>
+              <div class="container-map">
+              <% if !@apartment.latitude.blank? %>
+                <div id="map-apartment-show" class="map-apartments" 
+                  data-markers="<%= @markers.to_json %>"
+                  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                </div>
+              <% else %>
+                <div class="">  
+                  <p><%= t '.no_location_specified' %></p>
+                </div>
+              <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Apartment Details Section -->

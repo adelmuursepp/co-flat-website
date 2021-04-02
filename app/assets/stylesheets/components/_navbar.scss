@@ -1,0 +1,16 @@
+.navbar-main {
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar-main .navbar-collapse {
+  flex-grow: 0;
+}
+
+.nav-item a {
+  color: $main-blue;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}

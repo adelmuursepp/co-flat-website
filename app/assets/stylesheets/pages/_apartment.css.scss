@@ -1,0 +1,62 @@
+.apartment-details {
+    padding-top: 40px;
+  }
+  
+  .apartment-details .apartment-details-slider img {
+    width: 100%;
+  }
+  
+  .apartment-details .apartment-details-slider .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .apartment-details .apartment-details-slider .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #4154f1;
+  }
+  
+  .apartment-details .apartment-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #4154f1;
+  }
+  
+  .apartment-details .apartment-info {
+    padding: 30px;
+    border: 3px solid #ddd;
+    background-color: white;
+  }
+  
+  .apartment-details .apartment-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .apartment-details .apartment-info ul {
+    list-style: none;
+    padding: 0;
+    font-size: 15px;
+  }
+  
+  .apartment-details .apartment-info ul li + li {
+    margin-top: 10px;
+  }
+  
+  .apartment-details .apartment-description {
+    padding-top: 30px;
+  }
+  
+  .apartment-details .apartment-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .apartment-details .apartment-description p {
+    padding: 0;
+  }

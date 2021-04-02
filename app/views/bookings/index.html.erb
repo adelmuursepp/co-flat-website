@@ -1,0 +1,138 @@
+<!-- ======= Aktiivsed kuulutused sektsioon ======= -->
+<div class="container my-5">
+    <h2>Minu kuulutused</h2>
+</div>
+
+<div class="container my-5">
+    <% @active_apartments.each do |apartment| %>
+        <div class="card mb-3">
+            <div class="row g-0">
+                
+                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                            <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= apartment.description %></h5>
+                        <button type="button" class="btn my-3 btn-aktiivne">Kuulutus on aktiivne</button>
+                        <%= link_to "Arhiveeri kuulutus", deactivate_apartment_path(apartment), method: :patch, class: "btn my-3 btn-secondary" %>
+                        <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn  my-3 btn-primary" %>
+                        <%= link_to "Kustuta kuulutus",
+                            apartment_path(apartment),
+                            method: :delete,
+                            data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
+                            class: "btn my-3 btn-eemalda" %>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    <% end %>   
+</div>
+
+<!-- ======= Mitteaktiivsed kuulutused sektsioon ======= -->
+<div class="container my-5">
+    <% @inactive_apartments.each do |apartment| %>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                            <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= apartment.description %></h5>
+                        <button type="button" class=" btn my-3 btn-secondary">Kuulutus on mitteaktiivne</button>
+                        <%= link_to "Aktiveeri kuulutus", activate_apartment_path(apartment), method: :patch, class: "my-3 btn btn-aktiivne" %>
+                        <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn my-3 btn-primary" %>
+                        <%= link_to "Kustuta kuulutus",
+                            apartment_path(apartment),
+                            method: :delete,
+                            data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
+                            class: "btn my-3 btn-eemalda" %>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    <% end %>   
+</div>
+
+<hr/>
+<!-- ======= Kinnitust ootavad reserveeringud sektsioon ======= -->
+<div class="container my-5">
+    <h2>Huviliste teated</h2>
+</div>
+
+<!--- Pending apartments ---!>
+<div class="container my-5">
+    <% @active_apartments.each do |apartment| %>
+        <% apartment.bookings.each do |booking| %>
+            <% if booking.status == "pending" %>
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                            <%= cl_image_tag booking.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= booking.apartment.description %></h5>
+                                <button type="button" class="btn my-3 btn-secondary">Huviline on kirjutanud</button>
+                                <p class="card-text"><%= booking.description %></p>
+                                <!-- =======  link_to "Kinnita reserveering", confirm_booking_path(booking), method: :patch, class: "btn my-3 btn-primary" %>
+                                 <%= link_to "Tühista reserveering ja kustuta", decline_booking_path(booking), class: "btn my-3 btn-primary" %> ======= -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>  
+    <% end %>   
+</div>
+<!-- ======= Kinnitust ootavad reserveeringud sektsioon ======= -->
+
+
+<!-- ======= Reserveeringud sektsioon ======= -->
+<% if @accepted_bookings.any? or @pending_bookings.any? %>
+    <hr/>
+    <div class="container my-5">
+        <h2>Sinu saadetud sõnumid</h2>
+    </div>
+<% end %>
+
+<div class="container my-5">
+    <% @accepted_bookings.each do |booking| %>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                            <%= cl_image_tag booking.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        </div>
+                <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title"><%= booking.apartment.description %></h5>
+                    <p class="card-text"><%= booking.description %></p>
+                    <button type="button" class="btn my-3 btn-">Reserveering on kinnitatud</button>
+                </div>
+                </div>
+            </div>
+        </div>  
+    <% end %>   
+</div>
+
+<div class="container my-5">
+    <% @pending_bookings.each do |booking| %>
+        <div class="card mb-3">
+            <div class="row g-0">
+                
+                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                            <%= cl_image_tag booking.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        </div>
+                <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title"><%= booking.apartment.description %></h5>
+                    <p class="card-text"><%= booking.description %></p>
+                    <button type="button" class="btn my-3 btn-secondary">Üürileandja on sinu sõnumi kätte saanud</button>
+                </div>
+                </div>
+            </div>
+        </div>  
+    <% end %>   
+</div>
+<!-- ======= Reserveeringud sektsioon ======= -->

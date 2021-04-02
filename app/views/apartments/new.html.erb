@@ -1,0 +1,222 @@
+<div class="container-fluid px-5 mt-5 new-apartment-form">
+  <%= simple_form_for(@apartment) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :neighborhood %>
+        <%= f.text_field :neighborhood, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :address, class: "mb-0" %>
+        <small class="form-text text-muted"><%= t '.with_address_map' %></small>
+        <%= f.text_field :address, class: "form-control" %>
+        <%= f.input_field :show_address, as: :boolean %>
+        <%= f.label :show_address %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <div class="buttons-vertical-wrapper mx-3">
+          <%= f.label :room_type %>
+          <%= f.collection_radio_buttons :room_type, [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]], :first, :last %>
+        </div>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <div class="buttons-vertical-wrapper mx-3">
+          <%= f.label :bed_type %>
+          <%= f.collection_radio_buttons :bed_type, [["Diivan/sofa", "#{t('.sofa')}"] ,["Ühekohaline voodi", "#{t('.single_bed')}"], ["Kahekohaline voodi", "#{t('.two_bed')}"], ["Muu", "#{t('.other')}"]], :first, :last %>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <div class="buttons-vertical-wrapper mx-3">
+          <%= f.label :propertytype %>
+          <%= f.collection_radio_buttons :propertytype, [["Korter", "#{t('.apartment')}"] ,["Eramaja", "#{t('.house')}"], ["Muu", "#{t('.other')}"]], :first, :last %>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :room_size_m2 %>
+        <%= f.number_field :room_size_m2, class: "form-control", value: "0" %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :apartment_size_m2 %>
+        <%= f.number_field :apartment_size_m2, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :flatmates_female, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :flatmates_female, class: "form-control", value: 0 %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :flatmates_male, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :flatmates_male, class: "form-control", value: 0 %>
+      </div>
+    </div>
+    <div class="form-row mt-5">
+      <div class="form-group col-md-6 mx-3">
+        <%= f.label :preferred_gender %>
+        <div class="buttons-vertical-wrapper mx-3">
+          <%= f.collection_radio_buttons :preferred_gender, [["Ei oma tähtsust", "#{t('.no_preference')}"] ,["Naissoost", "#{t('.female')}"], ["Meessoost", "#{t('.male')}"]], :first, :last %>
+        </div>
+      </div>
+    </div>
+    <div class="form-row mb-5">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :min_preferred_flatmate_age, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :min_preferred_flatmate_age, class: "form-control", value: 18 %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :max_preferred_flatmate_age, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :max_preferred_flatmate_age, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :bedroomnumber %>
+        <%= f.number_field :bedroomnumber, class: "form-control", value: 1 %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :bathroomnumber %>
+        <%= f.number_field :bathroomnumber, class: "form-control", value: 1 %>
+      </div>
+    </div>
+    <label class="mx-3 mt-5"><%= t '.opportunities' %></label>
+    <div class="form-row mt-2">
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_wifi, as: :boolean %>
+        <%= f.label :is_wifi %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_furniture, as: :boolean %>
+        <%= f.label :is_furniture %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_parking, as: :boolean %>
+        <%= f.label :is_parking %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_tv, as: :boolean %>
+        <%= f.label :is_tv %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_desk, as: :boolean%>
+        <%= f.label :is_desk %>
+      </div> 
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_balcony, as: :boolean %>
+        <%= f.label :is_balcony %>
+      </div> 
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_washing_machine, as: :boolean %>
+        <%= f.label :is_washing_machine %>
+      </div> 
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_lift, as: :boolean %>
+        <%= f.label :is_lift %>
+      </div> 
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_dishwasher, as: :boolean %>
+        <%= f.label :is_dishwasher %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_private_bathroom, as: :boolean %>
+        <%= f.label :is_private_bathroom %>
+      </div> 
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_garden, as: :boolean %>
+        <%= f.label :is_garden %>
+      </div> 
+    </div>
+
+    <label class="mx-3 mt-5"><%= t('.rules').capitalize %></label>
+    <div class="form-row mt-2">
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_pet_friendly, as: :boolean %>
+        <%= f.label :is_pet_friendly %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_smoker_friendly, as: :boolean %>
+        <%= f.label :is_smoker_friendly %>
+      </div>
+      <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+        <%= f.input_field :is_couples_friendly, as: :boolean %>
+        <%= f.label :is_couples_friendly %>
+      </div>      
+    </div>
+  
+    <div class="form-row mt-2">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.input :minimum_stay_in_months, collection: 1..24, selected: 1 %>
+      </div>
+      
+    </div>
+
+  
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :intro %>
+        <%= f.text_field :intro, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-9 mx-3">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control", style: "height: 300px;" %>
+      </div>
+    </div>
+
+    <div class="form-row my-4">
+      <div class="form-group mx-3 col-md-11">
+        <label><bold><%= t '.reservation_available' %></bold></bold>
+        <p class="text-muted"><%= t '.reservation_explanation' %></p>
+        <%= f.input_field :is_bookable, as: :boolean %>
+        <%= f.label :is_bookable %>
+      </div> 
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :rent %>
+        <%= f.number_field :rent, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.label :deposit %>
+        <%= f.number_field :deposit, class: "form-control" %>
+        <small class="form-text text-muted"><%= t '.no_deposit' %></small>
+      </div>
+    </div>
+
+    <div class="form-row mt-2">
+      <div class="form-group col-md-5 mx-3">
+        <%= f.input :available, input_html: {class: "flatpickr-input"} %>
+      </div>
+      <div class="form-group col-md-5 mx-3">
+        <%= f.input :available_until, input_html: {class: "flatpickr-input"} %>
+        <small class="form-text text-muted mt-0"><%= t '.if_info_available' %></small>
+      </div>
+    </div>
+
+    <div class="form-row mt-2 mx-3">
+      <label><%= t '.add_photos' %></label>
+    </div>
+    <div class="form-row mt-2 mx-3", style="width: 700px;">
+      <%= f.input :photos, as: :file, input_html: { multiple: true, id: "file-upload"} %>
+    </div>
+    <div class="form-row mt-2 mx-3 mb-5">
+      <%= f.button :submit, class: "btn btn-primary", value: "#{t('.action')}" %>
+    </div>
+  <% end %>
+</div>
+
+    

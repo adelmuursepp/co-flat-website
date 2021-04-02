@@ -1,0 +1,28 @@
+<div class="container-fluid px-5 mt-5">
+  <div class="col-md-4 mx-auto">
+    <h2 class="text-center my-5"><%= t '.sign_in'%></h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }
+                    %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" }
+                    %>
+        <%= f.input :remember_me, label: "#{t('.remember_me')}", as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "#{t('.action')}", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+    <div class="my-5">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

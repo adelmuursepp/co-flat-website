@@ -1,0 +1,81 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    labels:
+      apartment:
+          new: 
+            name: Name
+            intro: Short description
+            description: Description and additional details
+            date: Date
+            main_photo: Main photo
+            deposit: Deposit
+            available: Available from
+            available_until: Available until
+            minimum_stay_in_months: Minimum stay in months
+            room_size_m2: Room size (m²)
+            apartment_size_m2: Apartment size (m²)
+            bed_type: Bed type
+            room_type: Room type
+            propertytype: Property type
+            bathrooms_number: Number of bathrooms
+            flatmates_female: How many female flatmales?
+            flatmates_male: How many female flatmales?
+            min_preferred_flatmate_age: Minimum preferred flatmate age
+            max_preferred_flatmate_age: Maximum preferred flatmate age
+            preferred_flatmate_is_male: Preferred flatmate is male
+            preferred_flatmate_is_female: Preferred flatmate is female
+            is_wifi: Wifi
+            is_tv: TV
+            is_washing_machine: Washing Machine
+            is_lift: Lift
+            is_furniture: Furnished
+            is_terrace: Terrace
+            is_balcony: Balcony
+            is_garden: Garden
+            is_parking: Parking
+            is_private_bathroom: Private Bathroom
+            is_dishwasher: Dishwasher
+            is_desk: Desk for working
+            is_pet_friendly: Pet friendly
+            is_smoker_friendly: Smoker friendly
+            is_couples_friendly: Couples friendly
+            show_address: Show address in the listing
+            is_bookable: Is instantly bookable
+            address: Address
+            rent: Rent
+            status: Status
+            city: City/Region
+            neighborhood: Neighborhood/County
+            preferred_gender: Preferred gender
+            bedroomnumber: Number of bedrooms
+            bathroomnumber: Number of bathrooms
+            maximum_stay_in_months: Maximum stay in months
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    # Examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'

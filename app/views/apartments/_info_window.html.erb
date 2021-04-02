@@ -1,0 +1,8 @@
+
+<%= link_to apartment_path(apartment) do %>
+    <p><%= apartment.intro %></p>
+    <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 100, height: 80, :quality=>"auto:low" %>
+    <div class="mt-2">
+        <p><%= humanized_money_with_symbol(apartment.rent) %></p>
+    </div>
+<% end %>

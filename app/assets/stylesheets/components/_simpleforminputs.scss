@@ -1,0 +1,32 @@
+.buttons-vertical-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-vertical-wrapper input {
+    margin-right: 10px; 
+}
+
+// input[type="file"]  {
+//     display: none;
+// }
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.new-apartment-form .img-thumbnail {
+    visibility: hidden;
+}
+
+.new-apartment-form .show-prev {
+    visibility: visible;
+}
+
+

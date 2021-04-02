@@ -1,0 +1,34 @@
+et:
+  apartments:
+    index:
+      tagline: Leia korterikaaslane ja üüri välja vaba tuba
+    edit:
+      city_region: Linn/maakond
+      neighborhood_county: Linnaosa/vald
+      address: Aadress
+    new:
+      helps_decide: See teave aitab kuulutuse otsijatel otsustada
+      opportunities: Võimalused
+      rules: reeglid
+      action: Lisa kuulutus
+      private_room: Eraldi tuba
+      shared_room: Jagatud tuba
+      whole_place: Üüritav koht tervenisti
+      sofa: Diivan/sofa
+      single_bed: Ühekohaline voodi
+      two_bed: Kahekohaline voodi
+      other: Muu
+      apartment: Korter
+      house: Eramaja
+      no_preference: Ei ole eelistust
+      female: Naissoost
+      male: Meessoost
+      with_address_map: Majanumbriga aadressi korral näidatakse kaarti kuulutusel
+      reservation_available: Kas reserveerimisvõimalus on olemas?
+      reservation_explanation: Reserveerimisvõimalus tähendab, et huviline saab küsida reserveeringut kindlal kuupäeval, mis Teil tuleb kinnitada või tühistada.
+      if_info_available: Juhul, kui see teave on teada
+      no_deposit: Jäta väli tühjaks, kui deposiiti pole
+      add_photos: Lisa fotod. (Fotod tuleb lisada korraga)
+    show:
+      location: Asukoht
+      no_location_specified: Pole täpset aadressi, mida kaardil näidata

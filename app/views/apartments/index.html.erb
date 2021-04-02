@@ -1,0 +1,81 @@
+
+<!-- ======= Hero Section ======= -->
+
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h1>Co-Flat</h1>
+        <h2></h2>
+        <%= link_to "Lisa kuulutus", apartments_new_path, class: "btn btn-cta btn-primary mt-4" %>
+      </div>
+      <div class="col-lg-6 hero-img" >
+        <%= cl_image_tag("banner-smaller", crop: :fill, :class => "hero-img-tag", :quality=>"auto:low") %>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======= Apartments section ======= -->
+<section id="apartment" class="apartment">
+
+  <div class="container">
+    <div>
+    <header class="section-header">
+      <h2>Korterikuulutused</h2>
+      <%= form_tag root_path, method: :get do %>
+        <%= label :location, "Otsi kortereid asukoha järgi: "%>
+        <%= text_field_tag :search, params[:search] %>
+      
+        <%= submit_tag "Näita", class: "btn btn-primary my-4" %>
+      <% end %>
+    </header>
+    </div>  
+    <div class="row">
+      <div class="container-apartments-show col-lg-8">
+        <div class="row gy-4 apartment-container">
+          <% @active_apartments.each do |apartment| %>
+            <div class="mb-4 mx-auto">
+              
+                <div class="card apartment-card" style="width: 300px;">  
+                  <div class="card-top">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        
+                          <% apartment.photos.each do |photo| %>
+                          <div class="swiper-slide"><%= cl_image_tag photo.key, crop: :fill, width: 300, height: 200, :quality=>"auto:low" %></div>
+                        <% end %>
+                      </div>
+                      <!-- Add Arrows -->
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
+                  </div>
+                  <%= link_to apartment_path(apartment) do %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= humanized_money_with_symbol(apartment.rent) %></h5>
+                      <p class="card-text"><%= apartment.intro %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-muted"><%= apartment.neighborhood unless apartment.neighborhood.blank? %>, <%= apartment.city unless apartment.city.blank? %><li>
+                      <li class="list-group-item text-muted"><%= apartment.flatmates_male + apartment.flatmates_female %> korterikaaslast</li>
+                    </ul>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="container-map col-lg-4">
+        <div id="map" class="map-apartments"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Apartments Section -->
+
+
