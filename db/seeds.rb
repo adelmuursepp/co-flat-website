@@ -10,6 +10,7 @@ puts('Cleaning database...')
 
 Booking.destroy_all
 Apartment.destroy_all
+User.destroy_all
 
 # apartment1 = Apartment.create!(name: "Tuukri tn kahetoaline", intro: "Ülikooli lähedal", rent: 15000, description: "Köögivarustus, loomad teretulnud",
 # address: "Krusanteemi tee 10, Viimsi, Estonia", main_photo: "https://unsplash.com/photos/MP0bgaS_d1c", deposit: 100, available: "Praegu", minimum_stay_in_months: 4,

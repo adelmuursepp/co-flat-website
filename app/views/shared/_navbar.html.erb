@@ -19,14 +19,14 @@
           <%= link_to "English", root_path(locale: :en), class: "nav-link  mr-3" %>
         </li>
         
-        ----!>
+        -->
        
         <li class="dropdown nav-item px-5" style="display: flex; flex-direction: row;">
               <a href="#" class=" dropdown-toggle-split" style="display: flex; flex-direction: row;" data-toggle="dropdown"
                     role="button" aria-haspopup="true" aria-expanded="false">
                     <!----
                     <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>
-                    ---!>
+                    -->
                     <%= cl_image_tag "user_icon_profile", class: "avatar dropdown-toggle img-circle avatar-small" %>
                     <p class="my-auto ml-2"><%= current_user.name + " ▾" || "Töölaud ▾" %></p>
                    
