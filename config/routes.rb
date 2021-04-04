@@ -2,7 +2,17 @@ Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    devise_for :users, skip: :omniauth_callbacks 
+    devise_for :users, skip: :omniauth_callbacks,
+            path: '',
+            path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'}
+   
+    resources :users, only: [:show] do
+      member do
+        post '/verify_phone_number' => 'users#verify_phone_number'
+        patch '/update_phone_number' => 'users#update_phone_number'
+      end
+    end
+   
     root to: 'apartments#index'
     get "apartments/new", to: "apartments#new"
     get "apartments/:id", to: "apartments#show", as: :apartment

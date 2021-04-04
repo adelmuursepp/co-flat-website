@@ -7,3 +7,22 @@
     background-color: #509c49;
     color: white;
 }
+
+
+.btn.btn-facebook {
+    border: 1px solid #3B5998;
+    background-color: #3B5998;
+    color: white;
+  }
+  
+  .btn.btn-facebook:active {
+    outline: none;
+    border-color: #2d467b;
+    background-color: #2d467b;
+  }
+
+  .btn-block {
+    display: block;
+    white-space: normal;
+    width: 100%;
+  }

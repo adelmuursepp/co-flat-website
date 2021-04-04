@@ -1,0 +1,54 @@
+<div class="row m-5">
+  <div class="col-md-3">
+    <div class="center">
+      <%= image_tag avatar_url(@user), class: "avatar-full" %>
+      <% if current_user && current_user != @user %>
+        <%# <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %> 
+      <% end %>
+    </div>
+    <br/>
+    <div class="panel panel-default">
+      <div class="panel-heading">Verification</div>
+      <div class="panel-body">
+        <ul class="sidebar-list">
+          <%# <% if @user.confirmation_token %>
+            <li>Email Address<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+          <%# <% end %> 
+          <%# <% if @user.provider %> 
+            <li>Facebook<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+          <%# <% end %> 
+          <%# <% if current_user.phone_verified %> 
+            <li>Phone Number<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+          <%# <% end %> 
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <h2><%= @user.name %></h2>
+
+    <div class="description row-space-3">
+      <%= @user.description %>
+    </div>
+
+    <%# <h4>Listings (<%= @rooms.length %></h4><br/>
+
+    <div class="row">
+      <%# <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
+    </div>
+    <br/>
+
+    <%# <h4>Reviews From Guests (<%= @guest_reviews.count %></h4> 
+    <div class="row">
+      <%# <%= render "reviews/guest_list" %> 
+    </div>
+    <br/>
+
+    <%# <h4>Reviews From Hosts (<%= @host_reviews.count %></h4> 
+    <div class="row">
+      <%# <%= render "reviews/host_list" %> 
+    </div>
+
+  </div>
+</div>

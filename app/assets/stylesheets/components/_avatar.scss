@@ -2,10 +2,7 @@
   width: 40px;
   border-radius: 50%;
 }
-.avatar-large {
-  width: 56px;
-  border-radius: 50%;
-}
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
@@ -17,4 +14,22 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+
+// AVATAR
+.avatar-small {
+  width: 28px;
+}
+
+.avatar-medium {
+  width: 48px;
+}
+
+.avatar-large {
+  width: 68px;
+}
+
+.avatar-full {
+  width: 100%;
 }
