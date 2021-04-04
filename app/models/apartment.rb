@@ -7,8 +7,8 @@ class Apartment < ApplicationRecord
     has_many :bookings
     belongs_to :user
 
-    validates :flatmates_female, numericality: { greater_than_or_equal_to: 1 }
-    validates :flatmates_male, numericality: { greater_than_or_equal_to: 1 }
+    # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
+    # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }
 
 
 end
