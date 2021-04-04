@@ -101,7 +101,7 @@ en:
         didn_t_receive_unlock_instructions: "Didn't receive unlock instruction?"
         forgot_your_password: "Forgot your password?"
         sign_in: "Sign in"
-        sign_in_with_provider: "Sign in with %{provider}"
+        sign_in_with_provider: "Sign in with "
         sign_up: "Sign up"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."

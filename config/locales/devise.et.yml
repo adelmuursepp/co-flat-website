@@ -63,10 +63,10 @@ et:
         subject: Parool muudetud
       reset_password_instructions:
         action: Muuda parooli
-        greeting: Tere %{recipient}!
-        instruction: Keegi on soovinud muuta sinu parooli, saad seda teha alloleva lingi kaudu.
-        instruction_2: Kui Te ei ole seda soovinud, palun ignoreeri seda kirja.
-        instruction_3: Teie parool ei muutu enne kui sa oled külastanud eelolevat linki ja uue parooli sisestanud.
+        greeting: Tere 
+        instruction: Muutke oma parool alloleva lingi kaudu.
+        instruction_2: Kui Te ei ole seda soovinud, palun ignoreerige seda kirja.
+        instruction_3: Teie parool ei muutu enne kui olete külastanud eelolevat linki ja uue parooli sisestanud.
         subject: Salasõna taastamise juhised
       unlock_instructions:
         action: Ava konto
@@ -76,7 +76,7 @@ et:
         subject: Lukust vabastamise juhised
     omniauth_callbacks:
       failure: Ei õnnestunud autoriseerida %{kind}-kontot, põhjus "%{reason}".
-      success: Edukalt autoriseeritud %{kind}-konto.
+      success: Sisse logitud %{kind}-kontoga.
     passwords:
       edit:
         change_my_password: Parooli muutmine
@@ -142,7 +142,7 @@ et:
         didn_t_receive_unlock_instructions: Ei saanud konto avamise juhiseid?
         forgot_your_password: Unustasite oma parooli?
         sign_in: Logi sisse
-        sign_in_with_provider: Logi sisse %{provider}-ga
+        sign_in_with_provider: Logi sisse teenusega
         sign_up: Loo konto
       minimum_password_length: 
     unlocks:
