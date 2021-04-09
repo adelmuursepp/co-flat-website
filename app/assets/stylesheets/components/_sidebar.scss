@@ -1,0 +1,26 @@
+// SIDEBAR
+.sidebar-list {
+
+    list-style: none;
+  }
+  
+  .sidebar-item {
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: $blue;
+  }
+  
+  .sidebar-link {
+    color: $blue;
+    text-decoration: none;
+  }
+  
+  .sidebar-link:hover, .sidebar-link:focus {
+    color: $lighter-blue;
+    text-decoration: none;
+  }
+  
+  .active.sidebar-link {
+    color: $lighter-blue;
+    text-decoration: none;
+  }
