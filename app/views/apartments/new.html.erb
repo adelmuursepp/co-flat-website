@@ -1,6 +1,7 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
   <%= simple_form_for(@apartment) do |f| %>
     <%= f.error_notification %>
+    <%= render "devise/shared/error_messages" %>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <%= f.label :city %>

@@ -80,6 +80,7 @@ en:
         delete_account: "Delete account"
         sure_to_delete: "Are you sure you want to delete the account?"
         back: "Back"
+        view_profile: "View My Profile"
       new:
         title: "Sign up"
         at_least: "At least"

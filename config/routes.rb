@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, skip: :omniauth_callbacks,
             path: '',
-            path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'}
+            path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
+            controllers: {registrations: 'registrations'}
    
     resources :users, only: [:show] do
       member do

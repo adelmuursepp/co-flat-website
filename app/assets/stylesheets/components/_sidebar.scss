@@ -7,20 +7,20 @@
   .sidebar-item {
     padding: 10px 0;
     font-size: 1.1rem;
-    color: $blue;
+    color: $body-color;
   }
   
   .sidebar-link {
-    color: $blue;
+    color: $body-color;
     text-decoration: none;
   }
   
   .sidebar-link:hover, .sidebar-link:focus {
-    color: $lighter-blue;
+    color: $body-color;
     text-decoration: none;
   }
   
   .active.sidebar-link {
-    color: $lighter-blue;
+    color: $body-color;
     text-decoration: none;
   }

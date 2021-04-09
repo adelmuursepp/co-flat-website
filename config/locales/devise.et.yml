@@ -27,6 +27,7 @@ et:
         unconfirmed_email: Kinnitamata meiliaadress
         unlock_token: Avamise tähis
         updated_at: Uuendatud
+        phone: Telefoninumber
     models:
       user: Kasutaja
   devise:
@@ -109,7 +110,8 @@ et:
         confirm_new_password: Korrake uus parool
         current_password_for_change: Muudatuste kinnitamiseks on vaja sisestada kehtiv parool
         current_password: Praegune parool
-        action: Uuenda profiili
+        action: Uuenda profiili andmeid
+        view_profile: Näita profiili
         delete_account: Kustuta konto
         sure_to_delete: Olete kindel, et soovite kustutada konto?
         back: Tagasi
@@ -159,5 +161,5 @@ et:
       not_found: ei leitud
       not_locked: ei olnud lukus
       not_saved:
-        one: '1 viga takistas salvestamast %{resource}:'
-        other: "%{count} viga takistasid salvestamast %{resource}:"
+        one: 'Salvestamisel esines viga:'
+        other: 'Salvestamisel esines %{count} viga:'

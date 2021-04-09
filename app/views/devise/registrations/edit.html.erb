@@ -4,21 +4,22 @@
     <%# <h2 class="mx-auto text-center my-5"><%= t '.title' %></h2> 
     <div class="row">
       <div class="col-md-3">
-        <ul class="sidebar-list">
+        <ul class="sidebar-list pl-0 pt-5">
           <li class="sidebar-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "sidebar-link active" %></li>
           <li class="sidebar-item"><%= link_to "#{t('.delete_account')}", registration_path(resource_name), data: { confirm: "#{t('.sure_to_delete')}" }, class: "sidebar-link active", method: :delete %></li>
           <li class="sidebar-item"><%= link_to "#{t('.back')}", :back, class: "sidebar-link active" %></li>
         </ul>
         <br/>
 
-        <%= link_to "View My Profile", user_path(current_user.id), class: "btn btn-primary" %>
+        <%= link_to "#{t('.view_profile')}", user_path(current_user.id), class: "btn btn-primary" %>
       </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
+  <div class="col-md-7">
+    <div class="">
+      <div class="">
         <div class="container">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= f.error_notification %>
+            <%= render "devise/shared/error_messages" %>
             <div class="form-inputs">
             <div class="form-row">
               <div class="form-group col-12">
@@ -63,15 +64,7 @@
                           input_html: { autocomplete: "new-password" } %>
               </div>
             </div>
-            <div class="form-row">
-            <div class="form-group col-12">
-              <%= f.input :current_password,
-                          hint: "#{t('.current_password_for_change')}",
-                          label: "#{t('.current_password')}",
-                          required: true,
-                          input_html: { autocomplete: "current-password" } %>
-              </div>
-            </div>
+           
             </div>
 
             <div class="form-actions">
@@ -83,78 +76,11 @@
     </div>
 
     <br/>
-    <!--
-    <div class="panel panel-default">
-      <div class="panel-heading">Your Phone Number</div>
-      <div class="panel-body">
-        <div class="container">
-          <% if !current_user.phone.blank? %>
-              <h4><%= current_user.phone %></h4>
-              <button class="btn btn-default" data-toggle="modal" data-target="#update-phone">Update Phone Number</button>
-              <% if current_user.phone_verified == false %>
-                  <button class="btn btn-default" data-toggle="modal" data-target="#verify-phone">Verify</button>
-              <% end %>
-          <% else %>
-              <button class="btn btn-default" data-toggle="modal" data-target="#update-phone">Add Phone Number</button>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    -->
+    
   </div>
 </div>
 
 
-<!-- MODAL FOR PHONE NUMBER 
-<div id="update-phone" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Phone Number</h4>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
-            <div class="form-group">
-              <%# <%= f.phone_field :phone_number, class: "form-control", placeholder: "Your Phone Number" %> 
-            </div>
-            <div class="text-center">
-              <%= f.submit "Save", class: "btn btn-normal" %>
-            </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
--->
-<!-- MODAL FOR VERIFICATION 
-<div id="verify-phone" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Verification Code</h4>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: verify_phone_number_user_path(current_user), method: :post do |f| %>
-            <div class="form-group">
-              <%= f.text_field :pin, class: "form-control", placeholder: "Your PIN", value: "" %>
-            </div>
-            <div class="text-center">
-              <%= f.submit "Verify", class: "btn btn-normal" %>
-            </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
--->
 
   </div>
 </div>
