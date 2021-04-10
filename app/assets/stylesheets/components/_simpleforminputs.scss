@@ -25,6 +25,13 @@
     visibility: hidden;
 }
 
+.new-apartment-form input[type="checkbox"] {
+    height: 1em;
+    width: 1em;
+    margin-bottom: 3px;
+    vertical-align: middle;
+}
+
 .new-apartment-form .show-prev {
     visibility: visible;
 }

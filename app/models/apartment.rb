@@ -9,6 +9,7 @@ class Apartment < ApplicationRecord
 
     # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
     # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }
+    validates :address, presence: true
 
 
 end

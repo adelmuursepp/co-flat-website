@@ -90,14 +90,15 @@
 
 
 <!-- ======= Reserveeringud sektsioon ======= -->
-<% if @accepted_bookings.any? or @pending_bookings.any? %>
+<%# <% if @accepted_bookings.any? or @pending_bookings.any? %> 
     <hr/>
     <div class="container my-5">
         <h2>Sinu saadetud sõnumid</h2>
     </div>
-<% end %>
+<%# <% end %> 
 
 <div class="container my-5">
+<!-- =======
     <% @accepted_bookings.each do |booking| %>
         <div class="card mb-3">
             <div class="row g-0">
@@ -114,6 +115,7 @@
             </div>
         </div>  
     <% end %>   
+    ======= -->
 </div>
 
 <div class="container my-5">

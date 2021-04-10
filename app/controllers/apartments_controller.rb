@@ -48,9 +48,11 @@ class ApartmentsController < ApplicationController
     def create
         @apartment = Apartment.new(apartment_params)
         @apartment.user_id = current_user.id
-        @apartment.save
-        
-        redirect_to apartment_path(@apartment)
+        if @apartment.save
+            redirect_to apartment_path(@apartment), notice: "Created..."
+        else
+            render :new, alert: "Something went wrong"
+        end
     end
 
     def edit
@@ -59,8 +61,13 @@ class ApartmentsController < ApplicationController
 
     def update
         @apartment = Apartment.find(params[:id])
-        @apartment.update(apartment_params)
-        redirect_to apartment_path(@apartment)
+        if @apartment.update(apartment_params)
+            flash[:notice] = "Saved..."
+        else
+            flash[:notice] = "Something went wrong"
+        end
+        # redirect_to apartment_path(@apartment)
+        redirect_back(fallback_location: request.referer)
     end
 
     def destroy
@@ -93,7 +100,7 @@ class ApartmentsController < ApplicationController
         :room_size_m2, :apartment_size_m2, :bed_type, :bathrooms_number, :bathroomnumber, :flatmates_female, :flatmates_male, 
         :min_preferred_flatmate_age, :max_preferred_flatmate_age, :preferred_flatmate_is_male, :preferred_flatmate_is_female,
         :is_wifi, :is_tv, :is_washing_machine, :is_lift, :is_furniture, :is_terrace, :is_balcony, :is_garden, 
-        :is_parking, :is_private_bathroom, :is_dishwasher, :is_pet_friendly, :is_smoker_friendly, :is_couples_friendly,
+        :is_parking, :is_private_bathroom, :is_dishwasher,:room_type, :preferred_gender, :is_desk, :is_pet_friendly, :is_smoker_friendly, :is_couples_friendly,
         :propertytype, :neighborhood, :bedroomnumber, :roomnumber, :is_bookable, photos: [])
     end
 end

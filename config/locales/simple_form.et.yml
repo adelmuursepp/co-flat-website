@@ -62,4 +62,4 @@ et:
       text: nõutav
       mark: '*'
     error_notification:
-      default_message: 'Vaadake allpool toodud probleemid üle.'
+      default_message: 'Salvestamisel esines üks või mitu viga'

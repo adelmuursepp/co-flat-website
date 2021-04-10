@@ -1,15 +1,26 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
+  <h4 class="mx-3 my-5">Postita korteri kuulutus</h4>
   <%= simple_form_for(@apartment) do |f| %>
     <%= f.error_notification %>
-    <%= render "devise/shared/error_messages" %>
+    <% if @apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+      <ul>
+      <% @apartment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <%= f.label :city %>
-        <%= f.text_field :city, class: "form-control" %>
+        <%= f.text_field :city, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <%= f.label :neighborhood %>
-        <%= f.text_field :neighborhood, class: "form-control" %>
+        <%= f.text_field :neighborhood, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <%= f.label :address, class: "mb-0" %>
