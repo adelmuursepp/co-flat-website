@@ -9,7 +9,11 @@ class Apartment < ApplicationRecord
 
     # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
     # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }
-    validates :address, presence: true
+    # In the order that it shows on apartments#new
+    validates :city, presence: true, length: {minimum: 3}
+    validates :neighborhood, presence: true, length: {minimum: 3}
+    validates :address, presence: true, length: {minimum: 3}
+
 
 
 end

@@ -1,0 +1,18 @@
+
+
+
+<% if @apartment.errors.any? %>
+    <div id="error_explanation" class="card mb-4">
+      <p class="card-title mx-4 mt-3">
+        <%= I18n.t("errors.messages.not_saved",
+                  count: @apartment.errors.count)
+        %>
+      </p>
+
+      <ul>
+      <% @apartment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>

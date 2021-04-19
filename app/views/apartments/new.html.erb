@@ -2,30 +2,21 @@
   <h4 class="mx-3 my-5">Postita korteri kuulutus</h4>
   <%= simple_form_for(@apartment) do |f| %>
     <%= f.error_notification %>
-    <% if @apartment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@apartment.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+    <%= render "shared/error_messages" %>
 
-      <ul>
-      <% @apartment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    
+
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :city %>
-        <%= f.text_field :city, class: "form-control", required: true %>
+        <%= f.input :city, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :neighborhood %>
-        <%= f.text_field :neighborhood, class: "form-control", required: true %>
+        <%= f.input :neighborhood, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <%= f.label :address, class: "mb-0" %>
         <small class="form-text text-muted"><%= t '.with_address_map' %></small>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.input :address, class: "form-control" %>
         <%= f.input_field :show_address, as: :boolean %>
         <%= f.label :show_address %>
       </div>

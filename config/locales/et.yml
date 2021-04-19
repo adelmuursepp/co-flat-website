@@ -1,4 +1,54 @@
 et:
+  activerecord:
+      attributes:
+        apartment:
+          name: Nimi
+          intro: Korteri nimi
+          description: Lühikirjeldus
+          date: Kuupäev
+          main_photo: Peapilt
+          deposit: Deposiit
+          available: Saadaval alates
+          available_until: Saadaval kuni
+          minimum_stay_in_months: Minimaalne üüriperiood
+          maximum_stay_in_months: Maksimaalne üüriperiood
+          room_size_m2: Toa suurus (m²)
+          apartment_size_m2: Korteri suurus (m²)
+          bed_type: Voodi tüüp
+          room_type: Toa tüüp
+          propertytype: Üürile antav koht
+          bathrooms_number: Vannitubade arv
+          flatmates_female: Hetkel naissoost korterikaaslasi
+          flatmates_male: Hetkel meessoost korterikaaslasi
+          min_preferred_flatmate_age: Eelistatud korterikaaslase minimaalne vanus
+          max_preferred_flatmate_age: Eelistatud korterikaaslase maksimaalne vanus
+          preferred_flatmate_is_male: Eelistatud korterikaaslane on meessoost
+          preferred_flatmate_is_female: Eelistatud korterikaaslane on naissoost
+          is_wifi: Internet
+          is_tv: Televisioon
+          is_washing_machine: Pesumasin
+          is_lift: Lift
+          is_furniture: Mööbel
+          is_terrace: Terrass
+          is_balcony: Rõdu
+          is_garden: Aed
+          is_parking: Parkimine
+          is_private_bathroom: Eraldi vannituba
+          is_dishwasher: Nõudepesumasin
+          is_desk: Laud töötamiseks
+          is_pet_friendly: Koduloomad lubatud
+          is_smoker_friendly: Suitsetamine lubatud
+          is_couples_friendly: Paarid lubatud
+          show_address: Näita kuulutuses aadressi
+          is_bookable: Korterit on võimalik kuupäevaliselt reserveerida
+          address: Aadress
+          rent: Rent
+          status: Staatus
+          city: Linn/maakond
+          neighborhood: Linnaosa/vald
+          preferred_gender: Eelistatud korterikaaslase sugu
+          bedroomnumber: Magamistubade arv
+          bathroomnumber: Vannitubade arv
   apartments:
     index:
       tagline: Leia korterikaaslane ja üüri välja vaba tuba

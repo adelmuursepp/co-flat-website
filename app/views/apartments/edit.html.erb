@@ -1,13 +1,26 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
   <%= simple_form_for(@apartment) do |f| %>
+  <%= f.error_notification %>
+  <% if @apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+      <ul>
+      <% @apartment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-inputs">
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <label><%= t '.city_region'%></label>
         <%= f.text_field :city, class: "form-control" %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label><%= t '.neighborhood_county'%></label>
-        <%= f.text_field :neighborhood, class: "form-control" %>
+        
+        <%= f.input :neighborhood, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <label class="mb-0"><%= t '.address'%></label>
@@ -214,6 +227,7 @@
 
     <div class="form-row mt-2 mx-3 mb-5">
       <%= f.button :submit, class: "btn btn-primary", value: "Uuenda korteri kuulutus" %>
+    </div>
     </div>
   <% end %>
 </div>
