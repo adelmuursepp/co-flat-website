@@ -1,6 +1,6 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
   <h4 class="mx-3 my-5">Postita korteri kuulutus</h4>
-  <%= simple_form_for(@apartment) do |f| %>
+  <%= simple_form_for(@apartment, :html => { :multipart => true }) do |f| %>
     <%= f.error_notification %>
     <% if @apartment.errors.any? %>
     <div id="error_explanation">
@@ -222,8 +222,12 @@
     <div class="form-row mt-2 mx-3">
       <label><%= t '.add_photos' %></label>
     </div>
-    <div class="form-row mt-2 mx-3", style="width: 700px;">
-      <%= f.input :photos, as: :file, input_html: { multiple: true, id: "file-upload"} %>
+    <div class="form-row mt-2 mx-3">
+      <input type="file" id="files" name="apartment[photos][]" multiple/>
+      <input type="hidden" name="photos_order" id="photos_order">
+    </div>
+    <div class="form-row mt-2 mx-3">
+      <div id="sortableImgThumbnailPreview"></div>
     </div>
     <div class="form-row mt-2 mx-3 mb-5">
       <%= f.button :submit, class: "btn btn-primary", value: "#{t('.action')}" %>
@@ -231,4 +235,3 @@
   <% end %>
 </div>
 
-    

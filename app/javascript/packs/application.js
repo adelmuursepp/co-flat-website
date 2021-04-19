@@ -32,7 +32,10 @@ import { initAutocomplete, initAutocompleteSearch } from '../plugins/init_autoco
 import "bootstrap";
 import Swiper from 'swiper/bundle';
 import AOS from 'aos';
-
+import "uploader";
+import "jquery-ui";
+import "jquery-ui/ui/widgets/sortable";
+import 'jquery-ui/ui/disable-selection';
 
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"

@@ -101,6 +101,14 @@ class ApartmentsController < ApplicationController
         :min_preferred_flatmate_age, :max_preferred_flatmate_age, :preferred_flatmate_is_male, :preferred_flatmate_is_female,
         :is_wifi, :is_tv, :is_washing_machine, :is_lift, :is_furniture, :is_terrace, :is_balcony, :is_garden, 
         :is_parking, :is_private_bathroom, :is_dishwasher,:room_type, :preferred_gender, :is_desk, :is_pet_friendly, :is_smoker_friendly, :is_couples_friendly,
-        :propertytype, :neighborhood, :bedroomnumber, :roomnumber, :is_bookable, photos: [])
+        :propertytype, :neighborhood, :bedroomnumber, :roomnumber, :is_bookable, :photos_order, photos: [])
+        .tap do |whitelisted_params|
+            photos = []
+            params[:photos_order]&.split(',').map(&:to_i).each do |i|
+                photos << whitelisted_params[:photos][i - 1]
+            end
+
+            whitelisted_params[:photos] = photos
+        end
     end
 end
