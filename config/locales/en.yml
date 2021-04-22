@@ -37,6 +37,28 @@ en:
       city_region: City/Region
       neighborhood_county: Neighborhood/County
       address: Address
+      helps_decide: This information helps the users decide
+      opportunities: Amenities
+      rules: rules
+      action: Add Listing
+      private_room: Private room
+      shared_room: Shared room
+      whole_place: Entire place
+      sofa: Sofa
+      single_bed: Single Bed
+      two_bed: Bed for Two
+      other: Other
+      apartment: Apartment
+      house: House
+      no_preference: No preference
+      female: Female
+      male: Male
+      with_address_map: If address with house number is inputted, the map will be shown on the listing
+      reservation_available: Can the user book the place?
+      reservation_explanation: Instant booking means the user can book the date and it will have to be confirmed by you.
+      if_info_available: If this information is available
+      no_deposit: Leave blank, if no deposit
+      add_photos: Add photos. All photos need to be added together
     new: 
       helps_decide: This information helps the users decide
       opportunities: Amenities

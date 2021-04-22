@@ -3,7 +3,11 @@
 <div class="row m-5">
   <div class="col-md-3">
     <div class="center">
-      <%= image_tag avatar_url(@user), class: "avatar-full" %>
+      <% if current_user.image %>
+        <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large", class: "img-circle avatar-large" %>
+      <% else %>
+          <%= cl_image_tag "user_icon_profile", class: "avatar avatar-large", style: "" %> 
+      <% end %>
       <% if current_user && current_user != @user %>
         <%# <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %> 
       <% end %>
@@ -11,33 +15,129 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        Verification
+        <h5><%= @user.name %></h5>
       </div>
       <div class="card-body">
-        <ul class="sidebar-list">
-          <%# <% if @user.confirmation_token %>
-            <li>Email Address<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
-          <%# <% end %> 
-          <%# <% if @user.provider %> 
-            <li>Facebook<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
-          <%# <% end %> 
-          <%# <% if current_user.phone_verified %> 
-            <li>Phone Number<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
-          <%# <% end %> 
-        </ul>
+        <%= @user.description %>
       </div>
-      <div class="card-footer">
-        Footer
-      </div>
+      
     </div>
+    <ul class="sidebar-list pl-2 pt-5">
+          <% if current_user && current_user == @user %>
+          <li class="sidebar-item"><%= link_to "Muuda profiili", edit_user_registration_path, class: "sidebar-link active" %></li>
+          <% end %>
+          <li class="sidebar-item"><%= link_to "Tagasi", :back, class: "sidebar-link active" %></li>
+    </ul>
+    <br/>
   </div>
 
   <div class="col-md-9">
-    <h2><%= @user.name %></h2>
+    <!-- ======= User's own profile ======= -->
 
-    <div class="description row-space-3">
-      <%= @user.description %>
+    <% if current_user && current_user == @user %>
+    <div class="container my-5">
+        <h2>Postitatud kuulutused</h2>
     </div>
+    <!-- ======= Aktiivsed kuulutused sektsioon ======= -->
+    <div class="container my-5">
+        <% @active_apartments.each do |apartment| %>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    
+                    <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                        <% if defined? apartment.photos[0] %>
+                                <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        <% end %>
+                        <!--
+                        <% apartment.photos.each do |photo| %>
+                        <%= cl_image_tag photo.key, crop: :fill, height: 200, width: 200, class: "ml-3", :quality=>"auto" %>
+                        <% end %>
+                        -->
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <%= link_to apartment_path(apartment) do %>
+                            <h4 class="card-title"><%= apartment.intro %></h4>
+                            <h6 class="card-title"><%= apartment.description %></h6>
+                            <% end %>
+                            <button type="button" class="btn my-3 btn-aktiivne">Kuulutus on aktiivne</button>
+                            <%= link_to "Arhiveeri kuulutus", deactivate_apartment_path(apartment), method: :patch, class: "btn my-3 btn-secondary" %>
+                            <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn  my-3 btn-primary" %>
+                            <%= link_to "Kustuta kuulutus",
+                                apartment_path(apartment),
+                                method: :delete,
+                                data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
+                                class: "btn my-3 btn-eemalda" %>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% end %>   
+    </div>
+
+    <!-- ======= Mitteaktiivsed kuulutused sektsioon ======= -->
+    <div class="container my-5">
+        <% @inactive_apartments.each do |apartment| %>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                                <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                            </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <%= link_to apartment_path(apartment) do %>
+                            <h4 class="card-title"><%= apartment.intro %></h4>
+                            <h6 class="card-title"><%= apartment.description %></h6>
+                            <% end %>
+                            <button type="button" class=" btn my-3 btn-secondary">Kuulutus on mitteaktiivne</button>
+                            <%= link_to "Aktiveeri kuulutus", activate_apartment_path(apartment), method: :patch, class: "my-3 btn btn-aktiivne" %>
+                            <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn my-3 btn-primary" %>
+                            <%= link_to "Kustuta kuulutus",
+                                apartment_path(apartment),
+                                method: :delete,
+                                data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
+                                class: "btn my-3 btn-eemalda" %>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% end %>   
+    </div>
+    <!-- ======= Another user's profile ======= -->
+    <% else %>
+        <div class="container my-5">
+        <h2>Korterite kuulutused</h2>
+    </div>
+    <!-- ======= Aktiivsed kuulutused sektsioon ======= -->
+    <div class="container my-5">
+        <% @active_apartments.each do |apartment| %>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    
+                    <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                        <% if defined? apartment.photos[0] %>
+                                <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        <% end %>
+                        <!--
+                        <% apartment.photos.each do |photo| %>
+                        <%= cl_image_tag photo.key, crop: :fill, height: 200, width: 200, class: "ml-3", :quality=>"auto" %>
+                        <% end %>
+                        -->
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <%= link_to apartment_path(apartment) do %>
+                            <h4 class="card-title"><%= apartment.intro %></h4>
+                            <h6 class="card-title"><%= apartment.description %></h6>
+                            <button type="button" class="btn my-3 btn-aktiivne">Kuulutus on aktiivne</button>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% end %>   
+    </div>
+    <% end %>
 
     <%# <h4>Listings (<%= @rooms.length %></h4><br/>
 

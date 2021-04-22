@@ -49,8 +49,9 @@ class ApartmentsController < ApplicationController
         @apartment = Apartment.new(apartment_params)
         @apartment.user_id = current_user.id
         if @apartment.save
-            redirect_to apartment_path(@apartment), notice: "Created..."
+            redirect_to apartment_path(@apartment), notice: "Kuulutus lisatud"
         else
+            # redirect_to apartments_new_path
             render :new, alert: "Something went wrong"
         end
     end
@@ -62,12 +63,14 @@ class ApartmentsController < ApplicationController
     def update
         @apartment = Apartment.find(params[:id])
         if @apartment.update(apartment_params)
-            flash[:notice] = "Saved..."
+            flash[:notice] = "Muudatused salvestatud"
+            redirect_back(fallback_location: request.referer)
         else
-            flash[:notice] = "Something went wrong"
+            # flash[:notice] = "Salvestamisel esines üks või mitu viga"
+            render :edit
         end
         # redirect_to apartment_path(@apartment)
-        redirect_back(fallback_location: request.referer)
+        # redirect_back(fallback_location: request.referer)
     end
 
     def destroy
@@ -82,14 +85,14 @@ class ApartmentsController < ApplicationController
         @apartment = Apartment.find(params[:id])
         @apartment.status = "active"
         @apartment.save
-        redirect_to bookings_path
+        redirect_to user_path(current_user.id)
     end
 
     def deactivate
         @apartment = Apartment.find(params[:id])
         @apartment.status = "inactive"
         @apartment.save
-        redirect_to bookings_path
+        redirect_to user_path(current_user.id)
     end
 
     private

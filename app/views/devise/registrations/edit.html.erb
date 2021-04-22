@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-3">
         <ul class="sidebar-list pl-0 pt-5">
-          <li class="sidebar-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "sidebar-link active" %></li>
+          <%# <li class="sidebar-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "sidebar-link active" %>
           <li class="sidebar-item"><%= link_to "#{t('.delete_account')}", registration_path(resource_name), data: { confirm: "#{t('.sure_to_delete')}" }, class: "sidebar-link active", method: :delete %></li>
           <li class="sidebar-item"><%= link_to "#{t('.back')}", :back, class: "sidebar-link active" %></li>
         </ul>
@@ -28,18 +28,17 @@
             </div>
             <div class="form-row">
               <div class="form-group col-12">
-                <%= f.input :phone, autofocus: true, class: "form-control" %>
+                <%= f.input :phone, autofocus: true, class: "form-control", hint: "Telefoninumbrit ei näidata avalikult" %>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-12">
-                <%= f.label :description %>
-                <%= f.text_area :description, rows: 5, autofocus: true, class: "form-control" %>
+                <%= f.input :description, as: :text, input_html: { rows: 5}, autofocus: true, class: "form-control", hint: "Teave, mida näidatakse profiili lehel" %>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-12">
-                <%= f.input :email, autofocus: true, class: "form-control" %>
+                <%= f.input :email, autofocus: true, class: "form-control", hint: "Meiliaadressi ei näidata avalikult" %>
               </div>
             </div>
             <div class="form-row">

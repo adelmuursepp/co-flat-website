@@ -3,3 +3,11 @@ Run initdb or pg_basebackup to initialize a PostgreSQL data directory.
 2021-03-17 21:07:46.504 EET [9072] FATAL:  database "test" does not exist
 2021-03-17 21:57:08.563 EET [11393] FATAL:  database "adelmuursepp" does not exist
 2021-03-17 22:10:34.649 EET [12428] FATAL:  database "initdb" does not exist
+2021-04-20 15:34:37.339 EEST [2290] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.29), 64-bit
+2021-04-20 15:34:37.341 EEST [2290] LOG:  could not bind IPv6 address "::1": Address already in use
+2021-04-20 15:34:37.341 EEST [2290] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2021-04-20 15:34:37.341 EEST [2290] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2021-04-20 15:34:37.341 EEST [2290] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2021-04-20 15:34:37.341 EEST [2290] WARNING:  could not create listen socket for "localhost"
+2021-04-20 15:34:37.341 EEST [2290] FATAL:  could not create any TCP/IP sockets
+2021-04-20 15:34:37.342 EEST [2290] LOG:  database system is shut down

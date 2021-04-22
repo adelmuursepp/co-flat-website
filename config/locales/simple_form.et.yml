@@ -19,7 +19,7 @@ et:
           deposit: Deposiit
           available: Saadaval alates
           available_until: Saadaval kuni
-          minimum_stay_in_months: Minimaalne üüriperiood
+          minimum_stay_in_months: Minimaalne üüriperiood (kuudes)
           maximum_stay_in_months: Maksimaalne üüriperiood
           room_size_m2: Toa suurus (m²)
           apartment_size_m2: Korteri suurus (m²)
@@ -48,7 +48,7 @@ et:
           is_pet_friendly: Koduloomad lubatud
           is_smoker_friendly: Suitsetamine lubatud
           is_couples_friendly: Paarid lubatud
-          show_address: Näita kuulutuses aadressi
+          show_address: Näita kuulutuses lisaks kaardile aadressi
           is_bookable: Korterit on võimalik kuupäevaliselt reserveerida
           address: Aadress
           rent: Rent
@@ -57,7 +57,8 @@ et:
           neighborhood: Linnaosa/vald
           preferred_gender: Eelistatud korterikaaslase sugu
           bedroomnumber: Magamistubade arv
-          bathroomnumber: Vannitubade arv
+          bathroomnumber: Vannitubade arv,
+          photos: Fotod
     required:
       text: nõutav
       mark: '*'

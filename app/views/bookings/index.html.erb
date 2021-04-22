@@ -1,59 +1,4 @@
-<!-- ======= Aktiivsed kuulutused sektsioon ======= -->
-<div class="container my-5">
-    <h2>Minu kuulutused</h2>
-</div>
 
-<div class="container my-5">
-    <% @active_apartments.each do |apartment| %>
-        <div class="card mb-3">
-            <div class="row g-0">
-                
-                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
-                            <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
-                        </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= apartment.description %></h5>
-                        <button type="button" class="btn my-3 btn-aktiivne">Kuulutus on aktiivne</button>
-                        <%= link_to "Arhiveeri kuulutus", deactivate_apartment_path(apartment), method: :patch, class: "btn my-3 btn-secondary" %>
-                        <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn  my-3 btn-primary" %>
-                        <%= link_to "Kustuta kuulutus",
-                            apartment_path(apartment),
-                            method: :delete,
-                            data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
-                            class: "btn my-3 btn-eemalda" %>
-                    </div>
-                </div>
-            </div>
-        </div>  
-    <% end %>   
-</div>
-
-<!-- ======= Mitteaktiivsed kuulutused sektsioon ======= -->
-<div class="container my-5">
-    <% @inactive_apartments.each do |apartment| %>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
-                            <%= cl_image_tag apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
-                        </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= apartment.description %></h5>
-                        <button type="button" class=" btn my-3 btn-secondary">Kuulutus on mitteaktiivne</button>
-                        <%= link_to "Aktiveeri kuulutus", activate_apartment_path(apartment), method: :patch, class: "my-3 btn btn-aktiivne" %>
-                        <%= link_to "Muuda kuulutuse infot", edit_apartment_path(apartment), class: "btn my-3 btn-primary" %>
-                        <%= link_to "Kustuta kuulutus",
-                            apartment_path(apartment),
-                            method: :delete,
-                            data: { confirm: "Olete kindel, et soovite kustutada kuulutuse?" },
-                            class: "btn my-3 btn-eemalda" %>
-                    </div>
-                </div>
-            </div>
-        </div>  
-    <% end %>   
-</div>
 
 <hr/>
 <!-- ======= Kinnitust ootavad reserveeringud sektsioon ======= -->
@@ -124,7 +69,9 @@
             <div class="row g-0">
                 
                 <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                        <% unless defined? booking.apartment.photos[0] %>
                             <%= cl_image_tag booking.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        <% end %>
                         </div>
                 <div class="col-md-9">
                 <div class="card-body">

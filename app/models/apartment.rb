@@ -10,10 +10,15 @@ class Apartment < ApplicationRecord
     # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
     # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }
     # In the order that it shows on apartments#new
-    validates :city, presence: true, length: {minimum: 3}
-    validates :neighborhood, presence: true, length: {minimum: 3}
-    validates :address, presence: true, length: {minimum: 3}
-
-
+    validates :intro, length: {minimum: 5}
+    validates :description, length: {minimum: 10}
+    validates :room_size_m2, presence: true
+    validates :apartment_size_m2, presence: true
+    validates :address, length: {minimum: 3}
+    validates :rent, presence: true
+    validates :city, length: {minimum: 3}
+    validates :neighborhood, length: {minimum: 3}
+    validates :room_type, presence: true
+    validates :photos, presence: true
 
 end

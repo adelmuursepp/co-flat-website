@@ -186,7 +186,7 @@
                 <div class="col-6">
                   <strong>Eelistatud korterikaaslane</strong>
                   <p>Sugu: <%= @apartment.preferred_gender.downcase %></p>
-                  <p>Vanus: <%= @apartment.min_preferred_flatmate_age %> – <%= @apartment.max_preferred_flatmate_age unless @apartment.max_preferred_flatmate_age.blank?  %></p>
+                  <p>Vanus: <%= @apartment.min_preferred_flatmate_age %> – <%= @apartment.max_preferred_flatmate_age == 0 ? "..." : @apartment.max_preferred_flatmate_age  %></p>
                 </div>
               </div>
             </div>

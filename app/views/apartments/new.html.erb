@@ -14,9 +14,8 @@
         <%= f.input :neighborhood, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :address, class: "mb-0" %>
+        <%= f.input :address, class: "form-control", required: true %>
         <small class="form-text text-muted"><%= t '.with_address_map' %></small>
-        <%= f.input :address, class: "form-control" %>
         <%= f.input_field :show_address, as: :boolean %>
         <%= f.label :show_address %>
       </div>
@@ -24,33 +23,41 @@
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.label :room_type %>
-          <%= f.collection_radio_buttons :room_type, [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]], :first, :last %>
+          <%= f.input :room_type, 
+          :collection => [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
+          <%# <%= f.collection_radio_buttons :room_type, [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]], :first, :last %> 
         </div>
       </div>
       <div class="form-group col-md-5 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.label :bed_type %>
-          <%= f.collection_radio_buttons :bed_type, [["Diivan/sofa", "#{t('.sofa')}"] ,["Ühekohaline voodi", "#{t('.single_bed')}"], ["Kahekohaline voodi", "#{t('.two_bed')}"], ["Muu", "#{t('.other')}"]], :first, :last %>
+           <%= f.input :bed_type, 
+          :collection => [["Diivan/sofa", "#{t('.sofa')}"] ,["Ühekohaline voodi", "#{t('.single_bed')}"], ["Kahekohaline voodi", "#{t('.two_bed')}"], ["Muu", "#{t('.other')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.label :propertytype %>
-          <%= f.collection_radio_buttons :propertytype, [["Korter", "#{t('.apartment')}"] ,["Eramaja", "#{t('.house')}"], ["Muu", "#{t('.other')}"]], :first, :last %>
+          <%= f.input :propertytype, 
+          :collection => [["Korter", "#{t('.apartment')}"] ,["Eramaja", "#{t('.house')}"], ["Muu", "#{t('.other')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :room_size_m2 %>
-        <%= f.number_field :room_size_m2, class: "form-control", value: "0" %>
+        <%= f.input :room_size_m2, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :apartment_size_m2 %>
-        <%= f.number_field :apartment_size_m2, class: "form-control" %>
+        <%= f.input :apartment_size_m2, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <%= f.label :flatmates_female, class: 'mb-0' %>
@@ -65,9 +72,12 @@
     </div>
     <div class="form-row mt-5">
       <div class="form-group col-md-6 mx-3">
-        <%= f.label :preferred_gender %>
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.collection_radio_buttons :preferred_gender, [["Ei oma tähtsust", "#{t('.no_preference')}"] ,["Naissoost", "#{t('.female')}"], ["Meessoost", "#{t('.male')}"]], :first, :last %>
+          <%= f.input :preferred_gender, 
+          :collection => [["Ei oma tähtsust", "#{t('.no_preference')}"] ,["Naissoost", "#{t('.female')}"], ["Meessoost", "#{t('.male')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
@@ -167,18 +177,17 @@
   
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :intro %>
-        <%= f.text_field :intro, class: "form-control" %>
+        <%= f.input :intro, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-9 mx-3">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: "form-control", style: "height: 300px;" %>
+        <%= f.input :description, class: "form-control", as: :text, :input_html => {:rows => 10}, required: true %>
       </div>
     </div>
 
+    <!--
     <div class="form-row my-4">
       <div class="form-group mx-3 col-md-11">
         <label><bold><%= t '.reservation_available' %></bold></bold>
@@ -187,11 +196,11 @@
         <%= f.label :is_bookable %>
       </div> 
     </div>
-
+    -->
+    
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :rent %>
-        <%= f.number_field :rent, class: "form-control" %>
+        <%= f.input :rent, class: "form-control", as: :numeric, required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
         <%= f.label :deposit %>

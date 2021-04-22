@@ -1,173 +1,173 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
-  <%= simple_form_for(@apartment) do |f| %>
+  <%= simple_form_for(@apartment, local: true, :html => { :multipart => true }) do |f| %>
   <%= f.error_notification %>
-  <% if @apartment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@apartment.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+  <%= render "shared/error_messages" %>
+  
 
-      <ul>
-      <% @apartment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="form-inputs">
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label><%= t '.city_region'%></label>
-        <%= f.text_field :city, class: "form-control" %>
+        <%= f.input :city, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        
-        <%= f.input :neighborhood, autofocus: true, class: "form-control" %>
+        <%= f.input :neighborhood, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label class="mb-0"><%= t '.address'%></label>
-        <small class="form-text text-muted">Majanumbriga aadressiga kuulutust näidatakse kaardil</small>
-        <%= f.text_field :address, class: "form-control" %>
-        <%= f.input_field :show_address, as: :boolean, id: "showAddressCheckbox" %>
-        <label for="showAddressCheckbox">Näita aadressi kuulutuses</label>
+        <%= f.input :address, class: "form-control", required: true %>
+        <small class="form-text text-muted"><%= t '.with_address_map' %></small>
+        <%= f.input_field :show_address, as: :boolean %>
+        <%= f.label :show_address %>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.collection_radio_buttons :room_type, [["Eraldi tuba", 'Eraldi tuba'] ,["Jagatud tuba", 'Jagatud tuba'], ["Terve korter", 'Terve korter']], :first, :last %>
+          <%= f.input :room_type, 
+          :collection => [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
+          <%# <%= f.collection_radio_buttons :room_type, [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]], :first, :last %> 
         </div>
       </div>
       <div class="form-group col-md-5 mx-3">
-
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.collection_radio_buttons :bed_type, [["Diivan/sofa", 'Diivan/sofa'] ,["Ühekohaline voodi", 'Ühekohaline voodi'], ["Kahekohaline voodi", 'Kahekohaline voodi']], :first, :last %>
+           <%= f.input :bed_type, 
+          :collection => [["Diivan/sofa", "#{t('.sofa')}"] ,["Ühekohaline voodi", "#{t('.single_bed')}"], ["Kahekohaline voodi", "#{t('.two_bed')}"], ["Muu", "#{t('.other')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label>Kuulutuse tüüp</label>
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.collection_radio_buttons :propertytype, [["Korter", 'Korter'] ,["Eramaja", 'Eramaja'], ["Muu", 'Muu']], :first, :last %>
+          <%= f.input :propertytype, 
+          :collection => [["Korter", "#{t('.apartment')}"] ,["Eramaja", "#{t('.house')}"], ["Muu", "#{t('.other')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label>Toa suurus (m²)</label>
-        <%= f.number_field :room_size_m2, class: "form-control", value: "0" %>
+        <%= f.input :room_size_m2, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label>Korteri suurus (m²)</label>
-        <%= f.number_field :apartment_size_m2, class: "form-control" %>
+        <%= f.input :apartment_size_m2, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label class="mb-0">Hetkel naissoost korterikaaslasi</label>
-        <small class="form-text text-muted">See teave aitab kuulutuse otsijatel otsustada</small>
-        <%= f.number_field :flatmates_female, class: "form-control", value: 0 %>
+        <%= f.label :flatmates_female, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :flatmates_female, class: "form-control" %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label class="mb-0">Hetkel meessoost korterikaaslasi</label>
-        <small class="form-text text-muted">See teave aitab kuulutuse otsijatel otsustada</small>
-        <%= f.number_field :flatmates_male, class: "form-control", value: 0 %>
+        <%= f.label :flatmates_male, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :flatmates_male, class: "form-control" %>
       </div>
     </div>
     <div class="form-row mt-5">
       <div class="form-group col-md-6 mx-3">
-        <label>Eelistatud korterikaaslase sugu</label>
         <div class="buttons-vertical-wrapper mx-3">
-          <%= f.collection_radio_buttons :preferred_gender, [["Ei oma tähtsust", 'Ei oma tähtsust'] ,["Naissoost", 'Naissoost'], ["Meessoost", 'Meessoost']], :first, :last %>
+          <%= f.input :preferred_gender, 
+          :collection => [["Ei oma tähtsust", "#{t('.no_preference')}"] ,["Naissoost", "#{t('.female')}"], ["Meessoost", "#{t('.male')}"]],
+          :label_method => :first, 
+          :value_method => :last, 
+          :as => :radio_buttons %>
         </div>
       </div>
     </div>
     <div class="form-row mb-5">
       <div class="form-group col-md-5 mx-3">
-        <label class="mb-0">Eelistatud korterikaaslase minimaalne vanus</label>
-        <small class="form-text text-muted">Selle teave võib täita soovi korral</small>
-        <%= f.number_field :min_preferred_flatmate_age, class: "form-control", value: 18 %>
+        <%= f.label :min_preferred_flatmate_age, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
+        <%= f.number_field :min_preferred_flatmate_age, class: "form-control" %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label class="mb-0">Eelistatud korterikaaslase maksimaalne vanus</label>
-        <small class="form-text text-muted">Selle teave võib täita soovi korral</small>
+        <%= f.label :max_preferred_flatmate_age, class: 'mb-0' %>
+        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
         <%= f.number_field :max_preferred_flatmate_age, class: "form-control" %>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label>Magamistubade arv</label>
-        <%= f.number_field :bedroomnumber, class: "form-control", value: 1 %>
+        <%= f.label :bedroomnumber %>
+        <%= f.number_field :bedroomnumber, class: "form-control" %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label>Vannitubade arv</label>
-        <%= f.number_field :bathroomnumber, class: "form-control", value: 1 %>
+        <%= f.label :bathroomnumber %>
+        <%= f.number_field :bathroomnumber, class: "form-control" %>
       </div>
     </div>
-    <label class="mx-3 mt-5">Võimalused</label>
+    <label class="mx-3 mt-5"><%= t '.opportunities' %></label>
     <div class="form-row mt-2">
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_wifi, as: :boolean, id: "is_wifi" %>
-        <label for="is_wifi" >Internet</label>
+        <%= f.input_field :is_wifi, as: :boolean %>
+        <%= f.label :is_wifi %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_furniture, as: :boolean, id: "is_furniture" %>
-        <label for="is_furniture">Mööbel</label>
+        <%= f.input_field :is_furniture, as: :boolean %>
+        <%= f.label :is_furniture %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_parking, as: :boolean, id: "is_parking" %>
-        <label for="is_parking">Parkimine</label>
+        <%= f.input_field :is_parking, as: :boolean %>
+        <%= f.label :is_parking %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_tv, as: :boolean, id: "is_tv" %>
-        <label for="is_tv">Televisoon</label>
+        <%= f.input_field :is_tv, as: :boolean %>
+        <%= f.label :is_tv %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_desk, as: :boolean, id: "is_desk" %>
-        <label for="is_desk">Laud töötamiseks</label>
+        <%= f.input_field :is_desk, as: :boolean%>
+        <%= f.label :is_desk %>
       </div> 
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_balcony, as: :boolean, id: "is_balcony" %>
-        <label for="is_balcony">Rõdu</label>
+        <%= f.input_field :is_balcony, as: :boolean %>
+        <%= f.label :is_balcony %>
       </div> 
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_washing_machine, as: :boolean, id: "is_washing_machine" %>
-        <label for="is_washing_machine">Pesumasin</label>
+        <%= f.input_field :is_washing_machine, as: :boolean %>
+        <%= f.label :is_washing_machine %>
       </div> 
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_lift, as: :boolean, id: "is_lift" %>
-        <label for="is_lift">Lift</label>
+        <%= f.input_field :is_lift, as: :boolean %>
+        <%= f.label :is_lift %>
       </div> 
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_dishwasher, as: :boolean, id: "is_dishwasher" %>
-        <label for="is_dishwasher">Nõudepesumasin</label>
+        <%= f.input_field :is_dishwasher, as: :boolean %>
+        <%= f.label :is_dishwasher %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_private_bathroom, as: :boolean, id: "is_private_bathroom" %>
-        <label for="is_private_bathroom">Eraldi vannituba</label>
+        <%= f.input_field :is_private_bathroom, as: :boolean %>
+        <%= f.label :is_private_bathroom %>
       </div> 
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_garden, as: :boolean, id: "is_garden" %>
-        <label for="is_garden">Aed</label>
+        <%= f.input_field :is_garden, as: :boolean %>
+        <%= f.label :is_garden %>
       </div> 
     </div>
 
-    <label class="mx-3 mt-5">Reeglid</label>
+    <label class="mx-3 mt-5"><%= t('.rules').capitalize %></label>
     <div class="form-row mt-2">
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_pet_friendly, as: :boolean, id: "is_pet_friendly" %>
-        <label for="is_pet_friendly">Lemmikloomad on lubatud</label>
+        <%= f.input_field :is_pet_friendly, as: :boolean %>
+        <%= f.label :is_pet_friendly %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_smoker_friendly, as: :boolean, id: "is_smoker_friendly" %>
-        <label for="is_smoker_friendly">Suitsetamine lubatud</label>
+        <%= f.input_field :is_smoker_friendly, as: :boolean %>
+        <%= f.label :is_smoker_friendly %>
       </div>
       <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
-        <%= f.input_field :is_couples_friendly, as: :boolean, id: "is_couples_friendly" %>
-        <label for="is_couples_friendly">Paarid on lubatud</label>
+        <%= f.input_field :is_couples_friendly, as: :boolean %>
+        <%= f.label :is_couples_friendly %>
       </div>      
     </div>
   
     <div class="form-row mt-2">
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :minimum_stay_in_months, collection: 1..24, selected: 1, label: "Minimaalne üüriperiood (kuudes)" %>
+        <%= f.input :minimum_stay_in_months, collection: 1..24, selected: 1 %>
       </div>
       
     </div>
@@ -175,60 +175,63 @@
   
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label>Korteri lühikirjeldus</label>
-        <%= f.text_field :intro, class: "form-control" %>
+        <%= f.input :intro, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-9 mx-3">
-        <label>Korteri kirjeldus ja lisainfo</label>
-        <%= f.text_area :description, class: "form-control", style: "height: 300px;" %>
+        <%= f.input :description, class: "form-control", as: :text, :input_html => {:rows => 10}, required: true %>
       </div>
     </div>
 
+    <!--
     <div class="form-row my-4">
       <div class="form-group mx-3 col-md-11">
-        <label><bold>Kas reserveerimisvõimalus on olemas?</bold></label>
-        <p class="text-muted">Reserveerimisvõimalus tähendab, et huviline saab küsida reserveeringut kindlal kuupäeval, mis Teil tuleb kinnitada või tühistada.</p>
-        <%= f.input_field :is_bookable, as: :boolean, id: "is_bookable" %>
-        <label for="is_bookable">Reserveerimisvõimalus on olemas</label>
+        <label><bold><%= t '.reservation_available' %></bold></bold>
+        <p class="text-muted"><%= t '.reservation_explanation' %></p>
+        <%= f.input_field :is_bookable, as: :boolean %>
+        <%= f.label :is_bookable %>
       </div> 
     </div>
-
+    -->
+    
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <label>Rent (kuus)</label>
-        <%= f.number_field :rent, class: "form-control", value: @apartment.rent_cents/100 %>
+        <%= f.input :rent, class: "form-control", as: :numeric, required: true, input_html: {value: @apartment.rent.fractional/100} %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <label>Deposiit</label>
+        <%= f.label :deposit %>
         <%= f.number_field :deposit, class: "form-control" %>
-        <small class="form-text text-muted">0, kui deposiiti ei ole</small>
+        <small class="form-text text-muted"><%= t '.no_deposit' %></small>
       </div>
     </div>
 
     <div class="form-row mt-2">
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :available, input_html: {class: "flatpickr-input"}, label: "Saadaval alates" %>
+        <%= f.input :available, input_html: {class: "flatpickr-input"} %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :available_until, input_html: {class: "flatpickr-input"}, label: "Saadaval kuni" %>
-        <small class="form-text text-muted mt-0">Juhul, kui see teave on teada</small>
+        <%= f.input :available_until, input_html: {class: "flatpickr-input"} %>
+        <small class="form-text text-muted mt-0"><%= t '.if_info_available' %></small>
       </div>
     </div>
 
     <div class="form-row mt-2 mx-3">
-      <label>Lisa korteri pildid (Pildid tuleb valida korraga)</label>
+      <label><%= t '.add_photos' %></label>
     </div>
-    <div class="form-row mt-2 mx-3", style="width: 700px;">
-      <%= f.input :photos, as: :file, input_html: { multiple: true, id: "file-upload"} %>
+    <div class="form-row mt-2 mx-3">
+      <input type="file" id="files" name="apartment[photos][]" multiple/>
+      <input type="hidden" name="photos_order" id="photos_order">
+    </div>
+    <div class="form-row mt-2 mx-3">
+      <div id="sortableImgThumbnailPreview"></div>
     </div>
 
     <div class="form-row mt-2 mx-3 mb-5">
       <%= f.button :submit, class: "btn btn-primary", value: "Uuenda korteri kuulutus" %>
     </div>
-    </div>
+    
   <% end %>
 </div>
 

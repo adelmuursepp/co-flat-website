@@ -10,7 +10,7 @@ et:
           deposit: Deposiit
           available: Saadaval alates
           available_until: Saadaval kuni
-          minimum_stay_in_months: Minimaalne üüriperiood
+          minimum_stay_in_months: Minimaalne üüriperiood (kuudes)
           maximum_stay_in_months: Maksimaalne üüriperiood
           room_size_m2: Toa suurus (m²)
           apartment_size_m2: Korteri suurus (m²)
@@ -49,6 +49,7 @@ et:
           preferred_gender: Eelistatud korterikaaslase sugu
           bedroomnumber: Magamistubade arv
           bathroomnumber: Vannitubade arv
+          photos: Fotod
   apartments:
     index:
       tagline: Leia korterikaaslane ja üüri välja vaba tuba
@@ -56,6 +57,28 @@ et:
       city_region: Linn/maakond
       neighborhood_county: Linnaosa/vald
       address: Aadress
+      helps_decide: See teave aitab kuulutuse otsijatel otsustada
+      opportunities: Võimalused
+      rules: reeglid
+      action: Lisa kuulutus
+      private_room: Eraldi tuba
+      shared_room: Jagatud tuba
+      whole_place: Üüritav koht tervenisti
+      sofa: Diivan/sofa
+      single_bed: Ühekohaline voodi
+      two_bed: Kahekohaline voodi
+      other: Muu
+      apartment: Korter
+      house: Eramaja
+      no_preference: Ei ole eelistust
+      female: Naissoost
+      male: Meessoost
+      with_address_map: Majanumbriga aadressi korral näidatakse kaarti kuulutusel
+      reservation_available: Kas reserveerimisvõimalus on olemas?
+      reservation_explanation: Reserveerimisvõimalus tähendab, et huviline saab küsida reserveeringut kindlal kuupäeval, mis Teil tuleb kinnitada või tühistada.
+      if_info_available: Juhul, kui see teave on teada
+      no_deposit: Jäta väli tühjaks, kui deposiiti pole
+      add_photos: Lisa fotod. (Fotod tuleb lisada uuesti ja korraga)
     new:
       helps_decide: See teave aitab kuulutuse otsijatel otsustada
       opportunities: Võimalused
