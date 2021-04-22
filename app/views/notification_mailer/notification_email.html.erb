@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Uus teavitus <%= @notification.apartment.intro %> kohta.</p>
+    <p>
+    Sõnumi info:<br>
+    --------------------------
+    </p>
+    <p><%= @notification.description %></p>
+    <a href="https://co-flat.com/notifications" class="btn btn-default">Vaata teavitusi</a>
+  </body>
+</html>

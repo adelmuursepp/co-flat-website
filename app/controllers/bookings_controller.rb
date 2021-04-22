@@ -9,23 +9,33 @@ class BookingsController < ApplicationController
     def create
         apartment = Apartment.find(params[:apartment_id])
         description = params[:description]
-        booking  = Booking.create!(apartment: apartment, state: 'pending', user: current_user, description: description)
+        booking  = Booking.new(apartment: apartment, state: 'pending', user: current_user, description: description)
+
+        if booking.save
+          notification = create_notification(apartment, description)
+          flash[:notice] = "Sõnum saadetud"
+          NotificationMailer.with(notification: notification).notification_email.deliver_later
+          respond_to do |format|
+            format.html { redirect_to apartment_path(apartment) }
+            format.js
+          end
+        end
       
-        session = Stripe::Checkout::Session.create(
-          payment_method_types: ['card'],
-          line_items: [{
-            name: apartment.id,
-            images: [apartment.photos[0]],
-            amount: apartment.rent_cents,
-            currency: 'eur',
-            quantity: 1
-          }],
-          success_url: booking_url(booking),
-          cancel_url: booking_url(booking)
-        )
+        # session = Stripe::Checkout::Session.create(
+        #   payment_method_types: ['card'],
+        #   line_items: [{
+        #     name: apartment.id,
+        #     images: [apartment.photos[0]],
+        #     amount: apartment.rent_cents,
+        #     currency: 'eur',
+        #     quantity: 1
+        #   }],
+        #   success_url: booking_url(booking),
+        #   cancel_url: booking_url(booking)
+        # )
       
-        booking.update(checkout_session_id: session.id)
-        redirect_to bookings_path
+        # booking.update(checkout_session_id: session.id)
+        # redirect_to bookings_path
         # redirect_to new_booking_payment_path(booking)
     end
 
@@ -44,5 +54,16 @@ class BookingsController < ApplicationController
       @booking.save
       redirect_to bookings_path
     end
+
+  private
+
+  def create_notification(apartment, description)
+    return if apartment.user.id == current_user.id 
+    notification = Notification.create!(user_id: apartment.user.id,
+                          apartment_id: apartment.id,
+                          description: description,
+                          notice_type: 'Sõnum')
+    return notification
+  end
 
 end

@@ -1,0 +1,31 @@
+<div class="row m-5">
+<div class="container my-5">
+        <h2>Teated</h2>
+    </div>
+    <!-- ======= Aktiivsed kuulutused sektsioon ======= -->
+    <div class="container my-5">
+        <% @notifications.each do |notification| %>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    
+                    <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                        <% if defined? notification.apartment.photos[0] %>
+                                <%= cl_image_tag notification.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        <% end %>
+            
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="mt-2 mb-4"><%= notification.description %></h5>
+                            <%= link_to apartment_path(notification.apartment_id) do %>
+                                <h6 class="card-title"><%= notification.apartment.intro %></h6>
+                                <h6 class="card-title"><%= notification.apartment.description %></h6>
+                            <% end %>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% end %>   
+    </div>
+</div>

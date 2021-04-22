@@ -189,6 +189,14 @@
                   <p>Vanus: <%= @apartment.min_preferred_flatmate_age %> – <%= @apartment.max_preferred_flatmate_age == 0 ? "..." : @apartment.max_preferred_flatmate_age  %></p>
                 </div>
               </div>
+              <div class="row mt-4">
+                <div class="col-10">
+                  <strong>Kuulutuse lisas</strong>
+                  <p><%= link_to @apartment.user.name, user_path(@apartment.user) %></p>
+                </div>
+                <div class="col-6">
+                </div>
+              </div>
             </div>
             <div class="my-4">
               <%= form_tag bookings_path do %>
@@ -200,11 +208,11 @@
 
             <div class="apartment-info">
               <div class="row mt-4">
-                  <div class="col-6">
+                  <div class="col-10">
                     <strong><%= t '.location' %></strong>
-                    <p><%= @apartment.neighborhood unless @apartment.neighborhood.blank? %></p>
                     <p><%= @apartment.city unless @apartment.city.blank? %></p>
-                    <p><%= @apartment.city unless @apartment.show_address %></p>
+                    <p><%= @apartment.neighborhood unless @apartment.neighborhood.blank? %></p>
+                    <p><%= @apartment.show_address ? @apartment.address : ""  %></p>
                   </div>
               </div>
               <div class="container-map">

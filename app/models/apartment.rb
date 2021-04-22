@@ -6,6 +6,7 @@ class Apartment < ApplicationRecord
     monetize :rent_cents
     has_many :bookings
     belongs_to :user
+    has_many :notifications, dependent: :destroy
 
     # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
     # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }

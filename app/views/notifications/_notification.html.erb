@@ -1,0 +1,9 @@
+<% if notification.read %>
+    <li class=" notification notification-read dropdown-item text-muted">
+    <%= link_to "#{notification.notice_type}:  #{notification.description.truncate(20)}", link_through_path(notification), class: "text-muted" %>
+    </li>
+<% else %>
+    <li class=" notification notification-unread dropdown-item">
+    <%= link_to "#{notification.notice_type}:  #{notification.description.truncate(20)}", link_through_path(notification) %>
+    </li>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/link_through'
   devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
         patch '/update_phone_number' => 'users#update_phone_number'
       end
     end
+    resources :notifications, only: [:index]
+    get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
    
     root to: 'apartments#index'
     get "apartments/new", to: "apartments#new"

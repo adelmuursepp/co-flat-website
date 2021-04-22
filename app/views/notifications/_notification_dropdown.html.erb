@@ -1,0 +1,13 @@
+<li class="dropdown nav-item mr-1" style="display: flex; flex-direction: row; justify-self: center;">
+              <a href="#" class=" dropdown-toggle-split" style="display: flex; flex-direction: row;" data-toggle="dropdown"
+                    role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell my-auto" ></i> 
+                    <p class="my-auto"><%= current_user.notifications.where(read: false).count %></p>
+              </a>
+              <ul class="dropdown-menu" style="min-width: 14rem;">
+                <li class="dropdown-header">Teated</li>
+                <%= render current_user.notifications.order('created_at DESC').last(6) %>
+              </ul>
+            </li>
+
+
