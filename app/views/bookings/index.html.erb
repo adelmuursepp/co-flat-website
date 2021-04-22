@@ -1,11 +1,12 @@
 
 <hr/>
 <!-- ======= Kinnitust ootavad reserveeringud sektsioon ======= -->
+<!-- =======
 <div class="container my-5">
     <h2>Huviliste teated</h2>
 </div>
 
-<!--- Pending apartments ---!>
+
 <div class="container my-5">
     <% @active_apartments.each do |apartment| %>
         <% apartment.bookings.each do |booking| %>
@@ -20,8 +21,8 @@
                                 <h5 class="card-title"><%= booking.apartment.description %></h5>
                                 <button type="button" class="btn my-3 btn-secondary">Huviline on kirjutanud</button>
                                 <p class="card-text"><%= booking.description %></p>
-                                <!-- =======  link_to "Kinnita reserveering", confirm_booking_path(booking), method: :patch, class: "btn my-3 btn-primary" %>
-                                 <%= link_to "Tühista reserveering ja kustuta", decline_booking_path(booking), class: "btn my-3 btn-primary" %> ======= -->
+                                 < link_to "Kinnita reserveering", confirm_booking_path(booking), method: :patch, class: "btn my-3 btn-primary" %>
+                                 <%= link_to "Tühista reserveering ja kustuta", decline_booking_path(booking), class: "btn my-3 btn-primary" %> 
                             </div>
                         </div>
                     </div>
@@ -30,19 +31,16 @@
         <% end %>  
     <% end %>   
 </div>
-<!-- ======= Kinnitust ootavad reserveeringud sektsioon ======= -->
 
-
-<!-- ======= Reserveeringud sektsioon ======= -->
-<%# <% if @accepted_bookings.any? or @pending_bookings.any? %> 
+< <% if @accepted_bookings.any? or @pending_bookings.any? %> 
     <hr/>
     <div class="container my-5">
         <h2>Sinu saadetud sõnumid</h2>
     </div>
-<%# <% end %> 
+ <% end %> 
 
 <div class="container my-5">
-<!-- =======
+
     <% @accepted_bookings.each do |booking| %>
         <div class="card mb-3">
             <div class="row g-0">
@@ -59,7 +57,7 @@
             </div>
         </div>  
     <% end %>   
-    ======= -->
+ 
 </div>
 
 <div class="container my-5">
@@ -83,4 +81,5 @@
         </div>  
     <% end %>   
 </div>
+   ======= -->
 <!-- ======= Reserveeringud sektsioon ======= -->

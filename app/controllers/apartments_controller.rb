@@ -78,7 +78,7 @@ class ApartmentsController < ApplicationController
         @apartment.bookings.destroy_all
         @apartment.destroy
 
-        redirect_to bookings_path
+        redirect_to user_path(current_user)
     end
 
     def activate

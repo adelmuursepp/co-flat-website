@@ -5,12 +5,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 d-flex flex-column justify-content-center">
-        <h1>Co-Flat</h1>
-        <h2>Korterikaaslaste leidmine vahendustasuta</h2>
+        <%# <h1 class="mt-0">Co-Flat</h1> %>
+        <h2 class="mt-5">Korterikaaslaste leidmine vahendustasuta</h2>        
+        <h2 class="mt-4 mb-2">Tudengielu elamine lihtsamalt</h2>
+        
         <%= link_to "Lisa kuulutus", apartments_new_path, class: "btn btn-cta btn-primary mt-4" %>
       </div>
       <div class="col-lg-6 hero-img" >
         <%= cl_image_tag("banner-smaller", crop: :fill, :class => "hero-img-tag", :quality=>"auto:low") %>
+      </div>
+      <div class="pt-5" style="display: flex; width: 100%; justify-content: center;">
+
+        <span><i class="fas fa-chevron-down fa-5x mx-auto" style="color: #cccccc; align-self: center; "></i></span>
       </div>
     </div>
   </div>
@@ -58,7 +64,7 @@
                       <p class="card-text"><%= apartment.intro %></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item text-muted"><%= apartment.neighborhood unless apartment.neighborhood.blank? %>, <%= apartment.city unless apartment.city.blank? %><li>
+                      <li class="list-group-item text-muted"><%= apartment.neighborhood unless apartment.neighborhood.blank? %>, <%= apartment.city unless apartment.city.blank? %></li>
                       <li class="list-group-item text-muted"><%= apartment.flatmates_male + apartment.flatmates_female %> korterikaaslast</li>
                     </ul>
                   <% end %>
