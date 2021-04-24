@@ -50,7 +50,7 @@ et:
           is_couples_friendly: Paarid lubatud
           show_address: Näita kuulutuses lisaks kaardile aadressi
           is_bookable: Korterit on võimalik kuupäevaliselt reserveerida
-          address: Aadress
+          address: Korteri aadress
           rent: Rent
           status: Staatus
           city: Linn/maakond

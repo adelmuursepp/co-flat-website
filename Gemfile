@@ -32,6 +32,7 @@ gem 'jquery-ui-rails'
 # Localisation
 gem 'rails-i18n'
 
+
 # Geocoding
 gem 'geocoder'
 # Showing prices with currency

@@ -7,7 +7,7 @@
               <div class="swiper-container apartment-slide-container">
                 <div class="swiper-wrapper">
                   <% @apartment.photos.each do |photo| %>
-                    <div class="swiper-slide apartment-slide"><%= cl_image_tag photo.key, crop: :fill, height: 400, width: 600, :quality=>"auto" %></div>
+                    <div class="swiper-slide apartment-slide"><%= cl_image_tag photo.key, crop: :fill, width: 600, height: 400, :quality=>"auto" %> </div>
                   <% end %>
                 </div>
                 <!-- Add Pagination -->

@@ -9,7 +9,7 @@
         <h2 class="mt-5">Korterikaaslaste leidmine vahendustasuta</h2>        
         <h2 class="mt-4 mb-2">Tudengielu elamine lihtsamalt</h2>
         
-        <%= link_to "Lisa kuulutus", apartments_new_path, class: "btn btn-cta btn-primary mt-4" %>
+        <%= link_to "Lisa kuulutus", apartments_new_path, class: "btn btn-cta btn-primary mt-4 mx-auto" %>
       </div>
       <div class="col-lg-6 hero-img" >
         <%= cl_image_tag("banner-smaller", crop: :fill, :class => "hero-img-tag", :quality=>"auto:low") %>
@@ -58,7 +58,7 @@
                       <div class="swiper-button-prev"></div>
                     </div>
                   </div>
-                  <%= link_to apartment_path(apartment) do %>
+                  <%= link_to apartment_path(apartment), target: :_blank do %>
                     <div class="card-body">
                       <h5 class="card-title"><%= humanized_money_with_symbol(apartment.rent) %></h5>
                       <p class="card-text"><%= apartment.intro %></p>
