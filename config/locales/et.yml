@@ -1,5 +1,7 @@
 et:
   activerecord:
+      models:
+        apartment: korter
       attributes:
         apartment:
           name: Nimi

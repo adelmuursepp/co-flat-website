@@ -252,16 +252,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-rails (4.3.4)
-      railties (>= 5.0)
-      sentry-ruby-core (~> 4.3.0)
-    sentry-ruby (4.3.2)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      faraday (>= 1.0)
-      sentry-ruby-core (= 4.3.2)
-    sentry-ruby-core (4.3.2)
-      concurrent-ruby
-      faraday
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -341,8 +331,6 @@ DEPENDENCIES
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
-  sentry-rails
-  sentry-ruby
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
