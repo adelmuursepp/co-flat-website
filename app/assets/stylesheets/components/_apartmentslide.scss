@@ -1,12 +1,9 @@
-.apartment-slide {
-    width: 600px;
-    height: 400px;
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
 }
 
-.apartment-slide-container {
-    width: 600px;
-    height: 400px;
-}
 
 .container-for-slideshow {
     display: flex;

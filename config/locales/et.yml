@@ -1,7 +1,7 @@
 et:
   activerecord:
       models:
-        apartment: korter
+        apartment: kuulutus
       attributes:
         apartment:
           name: Nimi
