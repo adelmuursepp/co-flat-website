@@ -68,6 +68,10 @@ document.addEventListener('turbolinks:load', () => {
   })
   
   const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      centeredSlides: true,
+      loop: true,
+      slidesPerGroup: 1,
       pagination: {
         el: '.swiper-pagination',
         type: 'fraction',

@@ -7,7 +7,7 @@
               <div class="swiper-container apartment-slide-container">
                 <div class="swiper-wrapper">
                   <% @apartment.photos.each do |photo| %>
-                    <div class="swiper-slide apartment-slide"><%= cl_image_tag photo.key, crop: :fill, height: 400, :quality=>"auto" %> </div>
+                    <div class="swiper-slide apartment-slide"><%= cl_image_tag photo.key, crop: :fill, width: 400, height: 400, :quality=>"auto", style: "width: 100%; object-fit: cover;" %> </div>
                   <% end %>
                 </div>
                 <!-- Add Pagination -->
@@ -198,10 +198,10 @@
                 </div>
               </div>
             </div>
-            <div class="my-4">
+            <div class="my-4 mx-4">
               <%= form_tag bookings_path do %>
                 <%= hidden_field_tag 'apartment_id', @apartment.id %>
-                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa soovi korral sõnum või kontaktandmed" %>
+                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa soovi korral sõnum või kontaktandmed", rows: 4 %>
                 <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
               <% end %>
             </div>

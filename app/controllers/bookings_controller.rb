@@ -1,15 +1,24 @@
 class BookingsController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:create]
     def index
       @active_apartments = Apartment.where(user_id: current_user.id, status: "active")
       @inactive_apartments = Apartment.where(user_id: current_user.id, status: "inactive")
-      @pending_bookings = Booking.where(user_id: current_user.id, status: "pending")
-      @accepted_bookings = Booking.where(user_id: current_user.id, status: "accepted")
-      @declined_bookings = Booking.where(user_id: current_user.id, status: "declined")
+      # @pending_bookings = Booking.where(user_id: current_user.id, status: "pending")
+      # @accepted_bookings = Booking.where(user_id: current_user.id, status: "accepted")
+      # @declined_bookings = Booking.where(user_id: current_user.id, status: "declined")
     end
     def create
         apartment = Apartment.find(params[:apartment_id])
         description = params[:description]
-        booking  = Booking.new(apartment: apartment, state: 'pending', user: current_user, description: description)
+
+        if current_user
+          booking  = Booking.new(apartment: apartment, user_id: current_user, state: 'pending', description: description) # Currently doesn't require login 
+        else
+          test_user = User.find(3)
+          booking  = Booking.new(apartment: apartment, user_id: test_user.id, state: 'pending', description: description) # Currently doesn't require login 
+        end
+
+        # will have to be changed to test user
 
         if booking.save
           notification = create_notification(apartment, description)
@@ -58,7 +67,9 @@ class BookingsController < ApplicationController
   private
 
   def create_notification(apartment, description)
-    return if apartment.user.id == current_user.id 
+    if current_user # this is needed in case the user not logged in and wants to send a message
+      return if apartment.user.id == current_user.id 
+    end
     notification = Notification.create!(user_id: apartment.user.id,
                           apartment_id: apartment.id,
                           description: description,
