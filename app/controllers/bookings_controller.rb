@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
         if current_user
           booking  = Booking.new(apartment: apartment, user_id: current_user, state: 'pending', description: description) # Currently doesn't require login 
         else
-          test_user = User.find(3)
+          test_user = User.find(13)
           booking  = Booking.new(apartment: apartment, user_id: test_user.id, state: 'pending', description: description) # Currently doesn't require login 
         end
 
