@@ -21,7 +21,6 @@ et:
           available_until: Saadaval kuni
           minimum_stay_in_months: Minimaalne üüriperiood (kuudes)
           maximum_stay_in_months: Maksimaalne üüriperiood
-          room_size_m2: Toa suurus (m²)
           apartment_size_m2: Korteri suurus (m²)
           bed_type: Voodi tüüp
           room_type: Toa tüüp

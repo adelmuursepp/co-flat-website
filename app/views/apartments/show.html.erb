@@ -1,8 +1,8 @@
 <section id="apartment-details" class="apartment-details" style="display: flex; justify-content: center;">
       <div class="container px-1 mx-1">
     
-        <div class="row gy-4 px-1">
-          <div class="col-lg-7 mx-0 my-2 px-0"
+        <div class="row gy-4" style="display: flex; justify-content: center;">
+          <div class="col-lg-6 mr-lg-3 my-2 px-0"
             <div class="container-for-slideshow">
               <div class="swiper-container apartment-slide-container">
                 <div class="swiper-wrapper">
@@ -146,7 +146,7 @@
           </div>
           
 
-          <div class="col-lg-5 mx-0 my-2 px-0 ">
+          <div class="col-lg-5 my-2 px-0 ">
             <div class="apartment-info">
               <h3><%= @apartment.intro %></h3>
               <div class="row mt-4">
@@ -198,10 +198,10 @@
                 </div>
               </div>
             </div>
-            <div class="my-4 mx-4">
+            <div class="my-4 mx-4 mx-md-0">
               <%= form_tag bookings_path do %>
                 <%= hidden_field_tag 'apartment_id', @apartment.id %>
-                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa soovi korral sõnum või kontaktandmed", rows: 4 %>
+                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa kontaktandmed, millega soovid, et kuulutuse ülespanija kontakteeruks. Lisa küsimused kuulutuse kohta.", rows: 6 %>
                 <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
               <% end %>
             </div>

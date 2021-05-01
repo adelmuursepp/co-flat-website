@@ -75,7 +75,7 @@ et:
       no_preference: Ei ole eelistust
       female: Naissoost
       male: Meessoost
-      with_address_map: Majanumbrita aadressiga pole korter üldotsingus kaardil leitav
+      with_address_map: Kui aadress on ilma majanumbrita, siis korterit ei näidata üldotsingus kaardil
       reservation_available: Kas reserveerimisvõimalus on olemas?
       reservation_explanation: Reserveerimisvõimalus tähendab, et huviline saab küsida reserveeringut kindlal kuupäeval, mis Teil tuleb kinnitada või tühistada.
       if_info_available: Juhul, kui see teave on teada
@@ -98,7 +98,7 @@ et:
       no_preference: Ei ole eelistust
       female: Naissoost
       male: Meessoost
-      with_address_map: Majanumbriga aadressi korral näidatakse kaarti kuulutusel
+      with_address_map: Kui aadress on ilma majanumbrita, siis korterit ei näidata üldotsingus kaardil
       reservation_available: Kas reserveerimisvõimalus on olemas?
       reservation_explanation: Reserveerimisvõimalus tähendab, et huviline saab küsida reserveeringut kindlal kuupäeval, mis Teil tuleb kinnitada või tühistada.
       if_info_available: Juhul, kui see teave on teada

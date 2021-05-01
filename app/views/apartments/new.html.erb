@@ -8,8 +8,7 @@
 
     <div class="form-row">
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :address, class: "form-control", required: true %>
-        <small class="form-text text-muted"><%= t '.with_address_map' %></small>
+        <%= f.input :address, class: "form-control", required: true, hint: "#{t('.with_address_map')}" %>
         <%= f.input_field :show_address, as: :boolean %>
         <%= f.label :show_address %>
       </div>
@@ -26,6 +25,7 @@
       <div class="form-group col-md-5 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
           <%= f.input :room_type, 
+          hint: "Üürile antava pinna tüüp",
           :collection => [["Eraldi tuba", "#{t('.private_room')}"] ,["Jagatud tuba", "#{t('.shared_room')}"], ["Üüritav koht tervenisti", "#{t('.whole_place')}"]],
           :label_method => :first, 
           :value_method => :last, 
@@ -62,20 +62,17 @@
         <%= f.input :apartment_size_m2, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :flatmates_female, class: 'mb-0' %>
-        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
-        <%= f.number_field :flatmates_female, class: "form-control", value: 0 %>
+        <%= f.input :flatmates_female, class: "form-control", value: 0, hint: "Täida soovi korral. See teave aitab kuulutuse otsijal otsustada." %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :flatmates_male, class: 'mb-0' %>
-        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
-        <%= f.number_field :flatmates_male, class: "form-control", value: 0 %>
+        <%= f.input :flatmates_male, class: "form-control", value: 0, hint: "Täida soovi korral. See teave aitab kuulutuse otsijal otsustada." %>
       </div>
     </div>
     <div class="form-row mt-5">
       <div class="form-group col-md-6 mx-3">
         <div class="buttons-vertical-wrapper mx-3">
           <%= f.input :preferred_gender, 
+          hint: "Täida soovi korral. See teave aitab kuulutuse otsijal otsustada.",
           :collection => [["Ei oma tähtsust", "#{t('.no_preference')}"] ,["Naissoost", "#{t('.female')}"], ["Meessoost", "#{t('.male')}"]],
           :label_method => :first, 
           :value_method => :last, 
@@ -85,14 +82,10 @@
     </div>
     <div class="form-row mb-5">
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :min_preferred_flatmate_age, class: 'mb-0' %>
-        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
-        <%= f.number_field :min_preferred_flatmate_age, class: "form-control", value: 18 %>
+        <%= f.input :min_preferred_flatmate_age, class: "form-control", value: 18, hint: "Täida soovi korral. See teave aitab kuulutuse otsijal otsustada." %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :max_preferred_flatmate_age, class: 'mb-0' %>
-        <small class="form-text text-muted"><%= t '.helps_decide' %></small>
-        <%= f.number_field :max_preferred_flatmate_age, class: "form-control" %>
+        <%= f.input :max_preferred_flatmate_age, class: "form-control", hint: "Täida soovi korral. See teave aitab kuulutuse otsijal otsustada." %>
       </div>
     </div>
     <div class="form-row">
@@ -171,7 +164,7 @@
   
     <div class="form-row mt-2">
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :minimum_stay_in_months, collection: 1..24, selected: 1 %>
+        <%= f.input :minimum_stay_in_months, collection: 1..24, selected: 1, hint: "Täida soovi korral." %>
       </div>
       
     </div>
@@ -205,19 +198,16 @@
         <%= f.input :rent, class: "form-control", required: true %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.label :deposit %>
-        <%= f.number_field :deposit, class: "form-control" %>
-        <small class="form-text text-muted"><%= t '.no_deposit' %></small>
+        <%= f.input :deposit, class: "form-control", hint: "Täida soovi korral. Jäta väli tühjaks, kui deposiiti pole." %>
       </div>
     </div>
 
     <div class="form-row mt-2">
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :available, input_html: {class: "flatpickr-input"} %>
+        <%= f.input :available, input_html: {class: "flatpickr-input"}, hint: "Täida soovi korral." %>
       </div>
       <div class="form-group col-md-5 mx-3">
-        <%= f.input :available_until, input_html: {class: "flatpickr-input"} %>
-        <small class="form-text text-muted mt-0"><%= t '.if_info_available' %></small>
+        <%= f.input :available_until, input_html: {class: "flatpickr-input"}, hint: "Täida soovi korral."  %>
       </div>
     </div>
 
