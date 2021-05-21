@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :bookings
 
   has_many :notifications, dependent: :destroy
+  has_many :reservations
+
 
   validates :name, presence: :true, length: {maximum: 50}
 

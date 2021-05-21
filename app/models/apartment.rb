@@ -4,9 +4,10 @@ class Apartment < ApplicationRecord
     geocoded_by :address
     after_validation :geocode, if: :will_save_change_to_address?
     monetize :rent_cents
-    has_many :bookings
+    has_many :bookings, dependent: :destroy
     belongs_to :user
     has_many :notifications, dependent: :destroy
+    has_many :reservations
 
     # validates :flatmates_female, numericality: { greater_than_or_equal_to: 0 }
     # validates :flatmates_male, numericality: { greater_than_or_equal_to: 0 }

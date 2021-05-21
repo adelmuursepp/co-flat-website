@@ -33,6 +33,10 @@
       <%= form_tag root_path, method: :get do %>
         <%= label :location, "Otsi kortereid asukoha järgi: "%>
         <%= text_field_tag :search, params[:search] %>
+        <!-- This is filters feature still in development
+        <%= text_field_tag :available, params[:available] %>
+        <%= text_field_tag :available_until, params[:available_until] %>
+        -->
       
         <%= submit_tag "Näita", class: "btn btn-primary my-4" %>
       <% end %>

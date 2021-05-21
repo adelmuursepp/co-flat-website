@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :create, :index, :show] do
       resources :payments, only: :new
     end
+    resources :reservations, only: [ :create] do
+      resources :payments, only: :new
+    end
   end
 
 end
