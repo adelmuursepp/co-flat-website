@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
         apartment = Apartment.find(params[:apartment_id])
         description = params[:description]
 
-        if current_user
+        if current_user && current_user != apartment.user
           booking  = Booking.new(apartment: apartment, user_id: current_user, state: 'pending', description: description) # Currently doesn't require login 
         else
           test_user = User.find(13)

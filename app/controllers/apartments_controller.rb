@@ -49,7 +49,7 @@ class ApartmentsController < ApplicationController
         @apartment = Apartment.new(apartment_params)
         @apartment.user_id = current_user.id
         if @apartment.save
-            redirect_to apartment_path(@apartment), notice: "Kuulutus on avalik. Muuda või arhiveeri kuulutus vaates üles pandud kuulutused."
+            redirect_to apartment_path(@apartment), notice: "Kuulutus on avalik. Muuda või arhiveeri kuulutus vaates: üles pandud kuulutused."
         else
             # redirect_to apartments_new_path
             render :new, alert: "Something went wrong"

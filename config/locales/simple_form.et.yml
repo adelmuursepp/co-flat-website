@@ -12,7 +12,7 @@ et:
       apartment:
         new: 
           name: Nimi
-          intro: Korteri nimi
+          intro: Kuulutuse lühikirjeldus
           description: Lühikirjeldus
           date: Kuupäev
           main_photo: Peapilt
@@ -50,12 +50,11 @@ et:
           show_address: Näita kuulutuses lisaks kaardile aadressi
           is_bookable: Korterit on võimalik kuupäevaliselt reserveerida
           address: Korteri aadress
-          rent: Rent
+          rent: Rent (kuus)
           status: Staatus
           city: Linn/maakond
           neighborhood: Linnaosa/vald
           preferred_gender: Eelistatud korterikaaslase sugu
-          bedroomnumber: Magamistubade arv
           bathroomnumber: Vannitubade arv,
           photos: Fotod
     required:
