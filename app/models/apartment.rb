@@ -5,7 +5,7 @@ class Apartment < ApplicationRecord
     after_validation :geocode, if: :will_save_change_to_address?
     monetize :rent_cents
     has_many :bookings, dependent: :destroy
-    belongs_to :user
+    belongs_to :user, dependent: :destroy
     has_many :notifications, dependent: :destroy
     has_many :reservations
 

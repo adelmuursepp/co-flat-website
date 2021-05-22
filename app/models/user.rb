@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   has_many :notifications, dependent: :destroy
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
 
 
   validates :name, presence: :true, length: {maximum: 50}
