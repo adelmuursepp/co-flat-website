@@ -201,7 +201,7 @@
             <div class="my-4 mx-4 mx-md-0">
               <%= form_tag bookings_path do %>
                 <%= hidden_field_tag 'apartment_id', @apartment.id %>
-                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa kontaktandmed, millega soovid, et kuulutuse ülespanija kontakteeruks. Lisa küsimused kuulutuse kohta.", rows: 6 %>
+                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa kontaktandmed, millega soovid, et kuulutuse ülespanija kontakteeruks. Veebilehe kaudu suhtlust ei toimu. Lisa küsimused kuulutuse kohta.", rows: 6 %>
                 <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
               <% end %>
             </div>

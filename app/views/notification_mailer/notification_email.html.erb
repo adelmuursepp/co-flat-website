@@ -4,12 +4,20 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Uus teavitus <%= @notification.apartment.intro %> kohta.</p>
+    <h4>Postitasite kuulutuse "<%= @notification.apartment.intro %>" Co-Flat veebilehele.</h4>
+    <h4>Teavitus kuulutuse kohta.</h4>
+
     <p>
-    Sõnumi info:<br>
+    Teile saadetud sõnum:<br>
     --------------------------
     </p>
     <p><%= @notification.description %></p>
+    <br/>
+    <br/>
+
+    <p>Palun kontakteeruge huvi korral sõnumi saatjaga nende lisatud kontakteerumise info kaudu.</p>
+    <p>Praegusel hetkel suhtlust veebilehe kaudu ei toimu ja Co-Flat ei jälgi omavahelist suhtlust.</p>
+    <br/>
     <a href="https://co-flat.com/notifications" class="btn btn-default">Vaata teavitusi</a>
   </body>
 </html>
