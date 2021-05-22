@@ -3,7 +3,7 @@
 <div class="row m-5">
   <div class="col-md-3">
     <div class="center">
-      <% if current_user.image %>
+      <% if @user.image %>
         <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large", class: "img-circle avatar-large" %>
       <% else %>
           <%= cl_image_tag "user_icon_profile", class: "avatar avatar-large", style: "" %> 
