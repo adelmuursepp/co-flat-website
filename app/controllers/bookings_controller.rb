@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
 
         if booking.save
           notification = create_notification(apartment, description)
-          flash[:notice] = "Sõnum saadetud"
+          flash[:notice] = "Sõnum saadetud. Kuulutuse lisaja võtab Teiega ühendust."
           NotificationMailer.with(notification: notification).notification_email.deliver_later
           respond_to do |format|
             format.html { redirect_to apartment_path(apartment) }
