@@ -1,5 +1,6 @@
 <div class="container-fluid px-5 mt-5 new-apartment-form">
   <h4 class="mx-3 my-5">Postita korteri kuulutus</h4>
+  
   <%= simple_form_for(@apartment, :html => { :multipart => true }) do |f| %>
     <%= f.error_notification %>
     <%= render "shared/error_messages" %>
@@ -221,9 +222,17 @@
     <div class="form-row mt-2 mx-3">
       <div id="sortableImgThumbnailPreview"></div>
     </div>
+    
+    <!-- Feedback form -->
+    <div class= "my-5">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1RyaCgK_z3cVCrpeqkbbkBxLHgaaql3ENXAuV8-3AnQlGhw/viewform?embedded=true" width="640" height="443" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
     <div class="form-row mt-2 mx-3 mb-5">
       <%= f.button :submit, class: "btn btn-primary", value: "#{t('.action')}" %>
     </div>
   <% end %>
+
+  
 </div>
 
