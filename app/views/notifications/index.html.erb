@@ -16,10 +16,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
-                            <h5 class="mt-2 mb-4"><%= notification.description %></h5>
+                            <h6>Sõnum:</h6>
+                            <h6 class="mt-2 mb-4"><%= notification.description %></h6>
+                            <p>Kuulutus</p>
                             <%= link_to apartment_path(notification.apartment_id) do %>
-                                <h6 class="card-title"><%= notification.apartment.intro %></h6>
-                                <h6 class="card-title"><%= notification.apartment.description %></h6>
+                                <p class="card-title"><%= notification.apartment.intro %></p>
                             <% end %>
                             
                         </div>
