@@ -1,8 +1,21 @@
 <section id="apartment-details" class="apartment-details" style="display: flex; justify-content: center;">
       <div class="container px-1 mx-1">
+        <!-- If the user looks at their posting, they can see how people will contact them -->
+        <% if current_user && current_user.id == @apartment.user_id %>
+          <div class="row gy-4 ml-lg-3" style="display: flex;">
+            <div class=" mr-lg-3 my-2 px-0">
+              <div class="apartment-info mx-auto mt-3" id="information-box" >
+                Kuulutus on avalik. <br/>
+                Huvilised saavad lisada oma kontakteerumise info. Teie saate selle kohta teavituse meili teel ja veebilehel. Suhtlus toimub hetkel veebileheväliselt.<br/><br/>
+                <p><%= link_to "Lisage enda kontaki info profiilil, et huvilised saaksid ühendust võtta otse.", edit_user_registration_path %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
     
         <div class="row gy-4" style="display: flex; justify-content: center;">
-          <div class="col-lg-6 mr-lg-3 my-2 px-0"
+          <!-- This div needs to be looked at because the tag is not closed -->
+          <div class="col-lg-6 mr-lg-3 my-2 px-0" 
             <div class="container-for-slideshow">
               <div class="swiper-container apartment-slide-container">
                 <div class="swiper-wrapper">
@@ -16,6 +29,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-scrollbar"></div>
+              
             </div>
             <div class="apartment-info mx-auto mt-3" >
               <div class="row mt-4">

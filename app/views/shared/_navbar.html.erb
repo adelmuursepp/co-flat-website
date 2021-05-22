@@ -50,7 +50,7 @@
                     <p class="my-auto ml-2"><%= current_user.name + " ▾" || "Töölaud ▾" %></p>    
               </a>
               <ul class="dropdown-menu" style="min-width: 14rem;">
-                <li class="dropdown-item"><%= link_to "Üles pandud kuulutused", user_path(current_user) %></li>
+                <li class="dropdown-item"><%= link_to "Kuulutused ja profiil", user_path(current_user) %></li>
                 <li class="dropdown-item"><%= link_to "Teated ja sõnumid", notifications_path %></li>
                 <%# <li class="dropdown-item"><%= link_to "Reserveeringud", bookings_path %>
                 <li role="separator" class="divider"></li>

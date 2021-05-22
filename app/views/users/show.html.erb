@@ -18,7 +18,11 @@
         <h5><%= @user.name %></h5>
       </div>
       <div class="card-body">
-        <%= @user.description %>
+        <% if @user.description == "" && @user == current_user %>
+          <%= link_to "Lisage enda kontaki info, et huvilised saaksid ühendust võtta otse.", edit_user_registration_path %>
+        <% else %>
+          <%= @user.description %>
+        <% end %>
       </div>
       
     </div>
@@ -32,6 +36,19 @@
   </div>
 
   <div class="col-md-9">
+    <!-- ======= Information Box about Contacting ======= -->
+    <% if current_user && current_user == @user %>
+        <div class="apartment-details">
+          <div class="row gy-4 ml-lg-3" style="display: flex;">
+            <div class=" mr-lg-3 my-2 px-0">
+              <div class="apartment-info mx-auto mt-3" id="information-box" >
+                Kui huvilised lisavad oma kontakti info, saate Teie selle kohta teavituse meili teel ja veebilehel. Suhtlus toimub hetkel veebileheväliselt.<br/><br/>
+                Võtke soovi korral huvilistega ühendust nende lisatud kontakti info kaudu.
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
     <!-- ======= User's own profile ======= -->
 
     <% if current_user && current_user == @user %>

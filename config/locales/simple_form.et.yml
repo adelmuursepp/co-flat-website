@@ -55,7 +55,7 @@ et:
           city: Linn/maakond
           neighborhood: Linnaosa/vald
           preferred_gender: Eelistatud korterikaaslase sugu
-          bathroomnumber: Vannitubade arv,
+          bathroomnumber: Vannitubade arv
           photos: Fotod
     required:
       text: nõutav

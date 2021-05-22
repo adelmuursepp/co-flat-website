@@ -3,7 +3,19 @@
         <h2>Teated</h2>
     </div>
     <!-- ======= Aktiivsed kuulutused sektsioon ======= -->
-    <div class="container my-5">
+    <div class="container my-1">
+        <!-- ======= Information Box about Contacting ======= -->
+        <div class="apartment-details" style="padding-top: 0px;">
+            <div class="row gy-4 ml-lg-3" style="display: flex;">
+                <div class=" mr-lg-3 my-2 px-0">
+                <div class="apartment-info mx-auto mt-3" id="information-box" >
+                    Kui huvilised lisavad oma kontakti info, saate Teie selle kohta teavituse meili teel ja veebilehel. Suhtlus toimub hetkel veebileheväliselt. Co-Flat ei jälgi omavahelist suhtlust.<br/><br/>
+                    Võtke soovi korral huvilistega ühendust nende lisatud kontakti info kaudu. 
+                </div>
+                </div>
+            </div>
+        </div>
+
         <% @notifications.each do |notification| %>
             <div class="card mb-3">
                 <div class="row g-0">
@@ -18,7 +30,7 @@
                         <div class="card-body">
                             <h6>Sõnum:</h6>
                             <h6 class="mt-2 mb-4"><%= notification.description %></h6>
-                            <p>Kuulutus</p>
+                            <p>Kuulutus:</p>
                             <%= link_to apartment_path(notification.apartment_id) do %>
                                 <p class="card-title"><%= notification.apartment.intro %></p>
                             <% end %>
