@@ -33,16 +33,46 @@
       <%= form_tag root_path, method: :get do %>
         <%= label :location, "Otsi kortereid asukoha järgi: "%>
         <%= text_field_tag :search, params[:search] %>
-        <!-- This is filters feature still in development
-        <%= text_field_tag :available, params[:available] %>
-        <%= text_field_tag :available_until, params[:available_until] %>
+        <!-- Kui tuleb reserveerimise feature
+        <div class="form-row mt-1">
+          <div class="form-group col-md-2">
+            <%= label :available, "Saadaval alates"%>
+            <%= text_field_tag :available, params[:available], class: "flatpickr-input form-control" %>
+          </div>
+          <div class="form-group col-md-2 mx-3">
+            <%= label :available_until, "Saadaval kuni"%>
+            <%= text_field_tag :available_until, params[:available_until], class: "flatpickr-input form-control"  %>
+          </div>
+        </div>
         -->
+        <div class="form-row mt-1">
+          <div class="form-group col-md-2">
+            <%= label :min_price, "Miinimum hind"%>
+            <%= text_field_tag :min_price, params[:min_price], class: "form-control" %>
+          </div>
+          <div class="form-group col-md-2 mx-md-3">
+            <%= label :max_price, "Maksimum hind"%>
+            <%= text_field_tag :max_price, params[:max_price], class: "form-control"  %>
+          </div>
+        </div>
+        <div class="row mt-1 search-checkboxes">
+          <div class="col-md-3">
+            <%= check_box_tag "q[room_type_eq_any][]", "Eraldi tuba", true %>Eraldi tuba
+          </div>
+          <div class="col-md-3">
+            <%= check_box_tag "q[room_type_eq_any][]", "Jagatud tuba", true %>Jagatud tuba
+          </div>
+          <div class="col-md-3">
+            <%= check_box_tag "q[room_type_eq_any][]", "Terve korter", true %> Terve korter/üüritav pind
+          </div>
+        </div>
+        
       
         <%= submit_tag "Näita", class: "btn btn-primary my-4" %>
       <% end %>
     </header>
     </div>  
-    <div class="row">
+    <div class="row mt-3">
       <div class="container-apartments-show col-lg-8">
         <div class="row gy-4 apartment-container">
           <% @active_apartments.each do |apartment| %>
@@ -69,6 +99,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item text-muted"><%= apartment.neighborhood unless apartment.neighborhood.blank? %>, <%= apartment.city unless apartment.city.blank? %></li>
+                      <li class="list-group-item text-muted"><%= apartment.room_type unless apartment.room_type.blank? %><%= ", " unless (apartment.room_type.blank? or apartment.propertytype.blank? ) %><%= apartment.propertytype.downcase unless apartment.propertytype.blank? %></li>
                       <li class="list-group-item text-muted"><%= apartment.flatmates_male + apartment.flatmates_female %> korterikaaslast</li>
                     </ul>
                   <% end %>

@@ -2,29 +2,32 @@ class ApartmentsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-        if params[:search].present?
-            @apartments = Apartment.near(params[:search], 50, order: :distance)
-            @active_apartments = @apartments.where(status: "active")
-
-            @markers = @active_apartments.geocoded.map do |apartment|
-                {
-                    lat: apartment.latitude,
-                    lng: apartment.longitude,
-                    infoWindow: render_to_string(partial: "info_window", locals: { apartment: apartment })
-                }
-                end
+        # If location specified
+        if params[:search].present? && params[:search].strip != ""
+            @apartments_search = Apartment.near(params[:search], 50, order: :distance)
+            @active_apartments_search = @apartments_search.where(status: "active")
         else
-            @active_apartments = Apartment.where(status: "active")
-            @inactive_apartments = Apartment.where(status: "inactive")
+            @active_apartments_search = Apartment.where(status: "active")
+            @inactive_apartments_search = Apartment.where(status: "inactive")
+        end
 
-            # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-            @markers = @active_apartments.geocoded.map do |apartment|
+        if params[:min_price].present? && params[:min_price].strip != ""
+            @active_apartments_search = @active_apartments_search.where("rent_cents > ?", (params[:min_price].to_i*100 - 1) )
+        end
+
+        if params[:max_price].present? && params[:max_price].strip != ""
+            @active_apartments_search = @active_apartments_search.where("rent_cents < ?", (params[:max_price].to_i*100 + 1) )
+        end
+
+        # Use ransack for all q params
+        @search = @active_apartments_search.ransack(params[:q])
+        @active_apartments = @search.result
+        @markers = @active_apartments.geocoded.map do |apartment|
             {
                 lat: apartment.latitude,
                 lng: apartment.longitude,
                 infoWindow: render_to_string(partial: "info_window", locals: { apartment: apartment })
             }
-            end
         end
         
     end

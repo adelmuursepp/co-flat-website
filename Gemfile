@@ -31,6 +31,8 @@ gem "font-awesome-rails"
 gem 'jquery-ui-rails'
 # Localisation
 gem 'rails-i18n'
+# Ransack for searching
+gem 'ransack', '~> 2.4'
 
 
 # Geocoding
