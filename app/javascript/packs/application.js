@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 import { initMapbox, initMapbox2 } from '../plugins/init_mapbox';
 import { initAutocomplete, initAutocompleteSearch } from '../plugins/init_autocomplete';
+import { initImageUploader } from '../plugins/init_uploader';
+
 
 //= require aos
 //= require flatpickr
@@ -63,6 +65,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox2();
   initAutocomplete();
   initAutocompleteSearch();
+  initImageUploader();
   flatpickr(".datepicker", {
       minDate: "today"
   })
