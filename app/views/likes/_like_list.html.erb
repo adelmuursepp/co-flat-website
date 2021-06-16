@@ -1,0 +1,23 @@
+<% if @likes.count == 0 %>
+    <div class="text-center">
+        <h6>Hetkel ei otsi ühegi </h6>
+    </div>
+<% else %>
+
+    <% @likes.order(id: :desc).each do |l| %>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <h6><%= link_to l.apartment.intro, apartment_path(l.apartment) %></h6>
+            </div>
+            <div class="col-md-9">
+                <span class="pull-right">
+                    <%= link_to l, method: :delete, data: {confirm: "Kindel, et soovid eemaldada lemmikute hulgast?"} do %>
+                        <i class="fa fa-trash-o fa-lg"></i>
+                    <% end %>
+                </span>
+                <div><%=l.created_at.strftime("%v") %></div>
+                <div><%= l.comment %></div>
+            </div>
+        </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,43 @@
+<button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#likeModal">
+    Märgi, et otsid kuulutuseks korterikaaslasi
+</button>
+
+    <!-- Modal when logged in-->
+<div class="modal fade" id="likeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="exampleModalLabel"><%= current_user ? "Märgi, et otsid korterikaaslasi ja oled kuulutusest huvitatud" : "Et end huviliseks märkida, palun looge konto või logige sisse" %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <% if current_user %>
+                <%= form_for current_user.likes.new do |f| %>
+                    <div class="modal-body">
+                            <%= hidden_field_tag 'apartment_id', @apartment.id %>
+                            <div class="form-group">
+                                <p>Lisa teave, mida korterikaaslaste otsijad saavad sinu kohta teada. Soovi korral lisa kontakteerumise viis.</p>
+                                <%= f.label "Lisa kas sul on koduloom, otsid kellegagi koos elamiskohta või muu oluline teave." %>
+                                <%= f.text_area :comment, rows: 4, class: "form-control" %>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <%= submit_tag 'Kinnita', class: 'btn btn-primary' %>
+                    </div>
+                <% end %>  
+            <% else %>
+                <div class="modal-body">
+                    <div class="form-group text-center">
+                        <%= link_to "Logi sisse", new_session_path(resource_name), class: "btn btn-primary mr-4" %>
+                        <%= link_to "Loo konto", new_registration_path(resource_name), class: "btn btn-primary" %><br />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

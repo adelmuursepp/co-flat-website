@@ -40,7 +40,8 @@ class ApartmentsController < ApplicationController
                 lng: @apartment.longitude,
                 infoWindow: render_to_string(partial: "info_window", locals: { apartment: @apartment })
             }]
-       
+       user_likes = Like.where(user_id: current_user.id, apartment_id: @apartment.id)
+       @user_like = user_likes.first
     end
 
     def new

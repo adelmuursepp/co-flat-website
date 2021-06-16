@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [ :create] do
       resources :payments, only: :new
     end
+
+    resources :likes, only: [:create, :destroy]
   end
 
 end

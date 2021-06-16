@@ -31,12 +31,47 @@
                 <div class="swiper-scrollbar"></div>
               
             </div>
+
             <div class="apartment-info mx-auto mt-3" >
+              <% if @user_like %>
+                <%= render "likes/like_remove" %>
+              <% else %>
+                <%= render "likes/like_create" %>
+              <% end %>
+
+              <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#contactModal">
+                Kontakteeru üürileandjaga
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Märgi, et otsid korterikaaslasi ja oled kuulutusest huvitatud</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= form_tag bookings_path do %>
+                        <%= hidden_field_tag 'apartment_id', @apartment.id %>
+                        <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa kontaktandmed, millega soovid, et kuulutuse ülespanija kontakteeruks. Veebilehe kaudu suhtlust ei toimu. Lisa küsimused kuulutuse kohta.", rows: 6 %>
+                        <div class="modal-footer">
+                          <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="row mt-4">
                 <div class="col-11">
                   <p><%= @apartment.description %></p>
                 </div>
               </div>
+              
               <div class="row mt-4">
                 <div class="col-6">
                   <strong>Toa suurus</strong>
@@ -164,6 +199,11 @@
             <div class="apartment-info">
               <h3><%= @apartment.intro %></h3>
               <div class="row mt-4">
+                <div class="col-11">
+                  <%= render "likes/showing_modal" %>
+                </div>
+              </div>
+              <div class="row mt-4">
                 <div class="col-6">
                   <strong><%= @apartment.room_type %></strong>
                 </div>
@@ -212,13 +252,7 @@
                 </div>
               </div>
             </div>
-            <div class="my-4 mx-4 mx-md-0">
-              <%= form_tag bookings_path do %>
-                <%= hidden_field_tag 'apartment_id', @apartment.id %>
-                <%= text_area_tag 'description', "", class: 'form-control my-3', placeholder: "Lisa kontaktandmed, millega soovid, et kuulutuse ülespanija kontakteeruks. Veebilehe kaudu suhtlust ei toimu. Lisa küsimused kuulutuse kohta.", rows: 6 %>
-                <%= submit_tag 'Kontakteeru üürileandjaga', class: 'btn btn-primary' %>
-              <% end %>
-            </div>
+            
             <div class="my-4 mx-4 mx-md-0">
              <%= render 'reservations/form' %>
             </div>
