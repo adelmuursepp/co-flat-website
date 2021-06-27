@@ -94,7 +94,10 @@
                   </div>
                   <%= link_to apartment_path(apartment), target: :_blank do %>
                     <div class="card-body">
-                      <h5 class="card-title"><%= humanized_money_with_symbol(apartment.rent) %></h5>
+                      <div class="d-flex justify-content-between">
+                        <h5 class="card-title"><%= humanized_money_with_symbol(apartment.rent) %></h5>
+                        <p class="text-muted text-right" style="font-size: 0.8rem; width: 9vw;"><%= "Korterikaaslasi otsib #{apartment.likes.count} kasutajat" unless (apartment.likes.count == 0 ) %></p>
+                      </div>
                       <p class="card-text"><%= apartment.intro %></p>
                     </div>
                     <ul class="list-group list-group-flush">

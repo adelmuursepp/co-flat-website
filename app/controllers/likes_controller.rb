@@ -1,5 +1,11 @@
 class LikesController < ApplicationController
 
+    def index
+        @likes = Like.where(user_id: current_user.id)
+        @user = current_user
+        
+    end
+
     def create
         @apartment_id = params[:apartment_id]
         if !Like.where(user_id: current_user.id, apartment_id: @apartment_id).first

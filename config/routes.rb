@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       resources :payments, only: :new
     end
 
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:index, :create, :destroy]
   end
 
 end

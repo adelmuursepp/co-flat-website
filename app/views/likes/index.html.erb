@@ -1,0 +1,99 @@
+
+
+<div class="row m-5">
+  <div class="col-md-3">
+    <div class="center">
+      <% if @user.image %>
+        <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large", class: "img-circle avatar-large" %>
+      <% else %>
+          <%= cl_image_tag "user_icon_profile", class: "avatar avatar-large", style: "" %> 
+      <% end %>
+      <% if current_user && current_user != @user %>
+        <%# <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %> 
+      <% end %>
+    </div>
+    <br/>
+    <div class="card">
+      <div class="card-header">
+        <h5><%= @user.name %></h5>
+      </div>
+      <div class="card-body">
+        <% if @user.description == "" && @user == current_user %>
+          <%= link_to "Lisage enda kontaki info, et teised kasutajad saaksid ühendust võtta otse.", edit_user_registration_path %>
+        <% else %>
+          <%= @user.description %>
+        <% end %>
+      </div>
+      
+    </div>
+    <ul class="sidebar-list pl-2 pt-5">
+          <% if current_user && current_user == @user %>
+          <li class="sidebar-item"><%= link_to "Postitatud kuulutused", user_path(current_user.id), class: "sidebar-link active" %></li>
+          <li class="sidebar-item"><%= link_to "Muuda profiili", edit_user_registration_path, class: "sidebar-link active" %></li>
+          <% end %>
+          <li class="sidebar-item"><%= link_to "Tagasi", :back, class: "sidebar-link active" %></li>
+    </ul>
+    <br/>
+  </div>
+
+  <div class="col-md-9">
+    
+    <!-- ======= User's own profile ======= -->
+
+    <% if current_user && current_user == @user %>
+    <div class="container my-5">
+        <h2>Kuulutused, milleks otsid korterikaaslasi</h2>
+    </div>
+    <!-- ======= Information Box about Contacting ======= -->
+    <% if current_user && current_user == @user && current_user.likes.any? %>
+        <div class="apartment-details">
+          <div class="row gy-4 ml-lg-3" style="display: flex;">
+            <div class=" mr-lg-3 my-2 px-0">
+              <div class="apartment-info mx-auto mt-0" id="information-box" >
+                Teised korterikaaslaste otsijad saavad näha lisatud informatsiooni ja soovi korral kontakteeruda lisatud kontakteerumise info kaudu.<br/><br/>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <!-- ======= Aktiivsed kuulutused sektsioon ======= -->
+    <div class="container my-5">
+        <% @likes.each do |l| %>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    
+                    <div class="col-md-3 my-3" style="display: flex; justify-content: center;">
+                        <% if defined? l.apartment.photos[0] %>
+                                <%= cl_image_tag l.apartment.photos[0].key, crop: :fill, width: 200, height: 200, class:"ml-3" %>
+                        <% end %>
+                        
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <%= link_to apartment_path(l.apartment) do %>
+                            <h4 class="card-title"><%= l.apartment.intro %></h4>
+                            <% end %>
+                            <h6 class="card-title text-muted">Sinu lisatud tekst:</h6>
+                            <h6 class="card-title text-muted"><%= l.comment %></h6>
+                            <%= link_to like_path(l), method: :delete, data: {confirm: "Oled kindel, et soovid eemaldada, et otsid korterikaaslasi selle kuulutuse jaoks?"} do %>
+                                <button type="button" class="btn btn-primary mt-3 ml-0">
+                                    Eemalda, et otsid korterikaaslasi
+                                </button>
+                            <% end %>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% end %>   
+    </div>
+
+   
+    <!-- ======= Another user's profile ======= -->
+    <% end %>
+        
+
+  
+
+  </div>
+</div>
