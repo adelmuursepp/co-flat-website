@@ -40,8 +40,10 @@ class ApartmentsController < ApplicationController
                 lng: @apartment.longitude,
                 infoWindow: render_to_string(partial: "info_window", locals: { apartment: @apartment })
             }]
-       user_likes = Like.where(user_id: current_user.id, apartment_id: @apartment.id)
-       @user_like = user_likes.first
+        if current_user
+            user_likes = Like.where(user_id: current_user.id, apartment_id: @apartment.id)
+            @user_like = user_likes.first
+        end
     end
 
     def new
@@ -56,7 +58,7 @@ class ApartmentsController < ApplicationController
             redirect_to apartment_path(@apartment), notice: "Kuulutus on avalik. Muuda või arhiveeri kuulutus vaates: Kuulutused ja profiil."
         else
             # redirect_to apartments_new_path
-            render :new, alert: "Something went wrong"
+            render :new, alert: "Midagi läks valesti"
         end
     end
 
