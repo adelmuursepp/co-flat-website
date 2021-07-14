@@ -22,6 +22,12 @@
             
             <div class="form-inputs">
             <div class="form-row">
+              <div class="form-group col-sm-2 col-md-3 mx-3 mb-0">
+                <%= f.input_field :, as: :boolean %>
+                <%= f.label :is_private_bathroom %>
+              </div> 
+            </div> 
+            <div class="form-row">
               <div class="form-group col-12">
                 <%= f.input :name, autofocus: true, class: "form-control" %>
               </div>

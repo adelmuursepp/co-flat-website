@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_123837) do
+ActiveRecord::Schema.define(version: 2021_07_14_171849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,21 @@ ActiveRecord::Schema.define(version: 2021_06_08_123837) do
     t.string "uid"
     t.string "image"
     t.string "phone"
+    t.integer "age"
+    t.integer "rent_for_months"
+    t.string "moving_in"
+    t.string "city"
+    t.string "university"
+    t.string "degree"
+    t.boolean "works_fulltime"
+    t.boolean "works_parttime"
+    t.boolean "studying"
+    t.boolean "looking_flatmates"
+    t.boolean "looking_flat"
+    t.string "facebook_link"
+    t.string "ig_link"
+    t.integer "min_rent"
+    t.integer "max_rent"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
