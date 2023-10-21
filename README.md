@@ -10,5 +10,8 @@ Have a look:
 
 The application was deployed in Heroku 20 stack. To redeploy the new versions run:
 
+
 `git push heroku-20`
+
+
 `heroku run db:migrate` to run the migrations on Heroku
