@@ -4,5 +4,5 @@ Solo coded a platform for apartment rentals in Tallinn on Ruby on Rails. Integra
 
 
 Have a look:
-[Website hosted on Heroku](https://coflat.herokuapp.com/](https://coflat20-595fdbc6e546.herokuapp.com/)https://coflat20-595fdbc6e546.herokuapp.com/)https://coflat.herokuapp.com/](https://coflat20-595fdbc6e546.herokuapp.com/)https://coflat20-595fdbc6e546.herokuapp.com/)
+[Website hosted on Heroku](https://coflat20-595fdbc6e546.herokuapp.com/)
 
