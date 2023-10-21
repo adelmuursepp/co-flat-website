@@ -6,3 +6,9 @@ Solo coded a platform for apartment rentals in Tallinn on Ruby on Rails. Integra
 Have a look:
 [Website hosted on Heroku](https://coflat20-595fdbc6e546.herokuapp.com/)
 
+### Deployment on Heroku
+
+The application was deployed in Heroku 20 stack. To redeploy the new versions run:
+
+`git push heroku-20`
+`heroku run db:migrate` to run the migrations on Heroku
