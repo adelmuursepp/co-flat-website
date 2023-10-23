@@ -14,7 +14,7 @@ Search for apartments using filters and by looking through the locations on the 
 ![Search apartments](demo_pics/search-apartments.png)
 
 About the development:
-- Interactive map integration using OpenStreetMap which parses the address of the rental unit and assigns at a geographic location
+- Interactive map integration using OpenStreetMap which parses the address of the rental unit and assigns it a geographic location
 - Bootstrap carousel component for interactively browsing multiple photos of a rental unit
 
 
