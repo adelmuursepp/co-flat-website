@@ -55,7 +55,7 @@ When the users are looking at a listing they like, they can send a message to th
 ![Send message](demo_pics/send-message.png)
 
 The message will appear in the notifications for the user, as well as be sent as an email. The email functionality used ApplicationMailer gem and is triggered automatically.
-![See notification for the message](demo_pics/see-notifications.png)
+<img src="demo_pics/see-notifications.png" alt="See notifications" width="1054" height="424">
 
 <br>
 
