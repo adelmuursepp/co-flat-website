@@ -8,10 +8,15 @@ Have a look:
 
 ### Overview of the functionalities & views
 
-#### Search for apartments using filters and by looking through the locations on the interactive map
+Search for apartments using filters and by looking through the locations on the interactive map
 <hr>
 
 ![Search apartments](demo_pics/search-apartments.png)
+
+About the development:
+- Interactive map integration using OpenStreetMap which parses the address of the rental unit and assigns at a geographic location
+- Bootstrap carousel component for interactively browsing multiple photos of a rental unit
+
 
 ### Deployment on Heroku
 
