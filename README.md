@@ -17,16 +17,45 @@ About the development:
 - Interactive map integration using OpenStreetMap which parses the address of the rental unit and assigns it a geographic location
 - Bootstrap carousel component for interactively browsing multiple photos of a rental unit
 
+<br>
+
 **Post a listing for an apartment**
 <hr>
 After creating an account, the user is able to post listings for the apartment. The address typed in will be translated to latitude and longitude by OpenStreetMap automatically. They are then able to specify the details about the listing, such as the number of bedrooms, washrooms, rent, description, check for all the amenities available, etc.
 
-![Apartment posting view](demo_pics/posting\ apartment.png)
+![Apartment posting view](demo_pics/posting apartment.png)
 ![Change photos order](demo_pics/change-pic-order.png)
 
 Additionally, the user has a special integration for choosing dates from the calendar and when uploading pictures, they are able to delete and reorder them. The functionality uses Cloudinary API to save photos efficiently and remember the order for each listing.
 
+<br>
 
+**The apartment listing view**
+<hr>
+Postings added by users will appear in general search and list all the details about the place. Multiple photos are viewable using Bootstrap carousel component. Additionally, users can learn about the location using the interactive map and zoom in and out.
+
+![Apartment view](demo_pics/apartment-view.png)
+![Interactive map at apartment view](demo_pics/interactive-map.png)
+
+<br>
+
+**Sending messages**
+<hr>
+For the messaging functionalities, users need to make an account
+![Create account](demo_pics/create-account.png)
+
+When the users are looking at a listing they like, they can send a message to the user who posted the listing. 
+![Send message](demo_pics/send-message.png)
+
+The message will appear in the notifications for the user, as well as be sent as an email. The email functionality used ApplicationMailer gem and is triggered automatically.
+![See notification for the message](demo_pics/see-notifications.png)
+
+<br>
+
+**Responsive design**
+The application was coded with the responsive design in mind. Each view was designed with the accompanying mobile and tablet view using CSS grid.
+
+![Mobile view for search](demo_pics/mobile-view3.png)
 
 ### Inspiration for the project
 
