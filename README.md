@@ -11,7 +11,7 @@ Have a look:
 #### Search for apartments using filters and by looking through the locations on the interactive map
 <hr>
 
-![Search apartments](demo-pics/search-apartments.png)
+![Search apartments](demo_pics/search-apartments.png)
 
 ### Deployment on Heroku
 
