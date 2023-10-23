@@ -55,6 +55,7 @@ When the users are looking at a listing they like, they can send a message to th
 ![Send message](demo_pics/send-message.png)
 
 The message will appear in the notifications for the user, as well as be sent as an email. The email functionality used ApplicationMailer gem and is triggered automatically.
+
 <img src="demo_pics/see-notifications.png" alt="See notifications" width="527" height="212">
 
 <br>
@@ -63,7 +64,7 @@ The message will appear in the notifications for the user, as well as be sent as
 <hr>
 The application was coded with the responsive design in mind. Each view was designed with the accompanying mobile and tablet view using CSS grid.
 
-<img src="demo_pics/mobile-view3.png" alt="Mobile view for search" width="384" height="727">
+<img src="demo_pics/mobile-view.png" alt="Mobile view for search" width="384" height="727"> <img src="demo_pics/mobile-view2.png" alt="Mobile view for search" width="384" height="727"> <img src="demo_pics/mobile-view3.png" alt="Mobile view for search" width="384" height="727">
 
 
 ### Inspiration for the project
