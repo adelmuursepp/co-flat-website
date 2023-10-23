@@ -8,9 +8,9 @@ Have a look:
 
 ### Overview of the functionalities & views
 
-##### Search for apartments using filters and by looking through the locations on the interactive map
+#### Search for apartments using filters and by looking through the locations on the interactive map
 <hr>
-![Apartment search](demo_pics/search_apartments.png)
+![Apartment search](./demo_pics/search_apartments.png)
 
 ### Deployment on Heroku
 
