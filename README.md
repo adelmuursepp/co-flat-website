@@ -60,9 +60,11 @@ The message will appear in the notifications for the user, as well as be sent as
 <br>
 
 **Responsive design**
+<hr>
 The application was coded with the responsive design in mind. Each view was designed with the accompanying mobile and tablet view using CSS grid.
 
-![Mobile view for search](demo_pics/mobile-view3.png)
+<img src="demo_pics/mobile-view3.png" alt="Mobile view for search" width="768" height="1454">
+
 
 ### Inspiration for the project
 
